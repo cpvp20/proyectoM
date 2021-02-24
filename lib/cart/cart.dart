@@ -52,8 +52,8 @@ class _CartState extends State<Cart> {
                             top: 30,
                             right: 30,
                             child: widget.productsList[index].product.liked
-                                ? Icon(Icons.favorite, color: blue)
-                                : Icon(Icons.favorite_border, color: blue)),
+                                ? Icon(Icons.favorite, color: green)
+                                : Icon(Icons.favorite_border, color: green)),
                         Positioned(
                             bottom: 12,
                             right: 18,
@@ -67,7 +67,7 @@ class _CartState extends State<Cart> {
                                 setState(() {});
                               },
                               icon: Icon(Icons.delete),
-                              color: blue,
+                              color: green,
                             ))
                       ]);
                     },

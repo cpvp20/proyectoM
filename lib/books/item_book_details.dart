@@ -41,12 +41,12 @@ class _BookDetailsState extends State<BookDetails> {
             Stack(alignment: Alignment.center, children: [
               Container(
                 color: orange,
-                width: 440,
-                height: 440,
+                width: 230,
+                height: 230,
               ),
               Container(
-                width: 400,
-                height: 400,
+                width: 200,
+                height: 200,
                 child: Image.network(widget.book.productImage),
               ),
               Positioned(
@@ -119,7 +119,7 @@ class _BookDetailsState extends State<BookDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaisedButton(
-                    child: Text("AGREGAR AL CARRITO",
+                    child: Text("ADD TO MY LIST",
                         style: TextStyle(
                             fontFamily: 'AkzidenzGrotesk BQ Medium',
                             fontSize: 12,

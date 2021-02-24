@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: const EdgeInsets.only(top: 100),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            colors: [blue, black],
+            colors: [green, black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter),
       ),
@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Nombre completo:',
+                child: Text('Full name:',
                     style: TextStyle(
                         color: white,
                         fontFamily: 'AkzidenzGrotesk BQ Medium',
@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               CheckboxListTile(
                 title: Text(
-                  'ACEPTO LOS TÉRMINOS Y CONDICIONES DE USO',
+                  'I ACCEPT TERMS AND CONDITIONS',
                   style: TextStyle(color: Colors.grey[200], fontSize: 10),
                 ),
                 value: checked,
@@ -147,11 +147,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 70,
                     child: Center(
                       child: Text(
-                        "REGISTRATE",
+                        "REGISTER",
                         style: TextStyle(
                             fontSize: 14,
                             color: black,
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
                             fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -161,7 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => Home(
-                            title: 'Inicio',
+                            title: 'Good Stuuf',
                           ),
                         ),
                       );
@@ -173,21 +172,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 40,
               ),
               Text(
-                "¿Ya tienes una cuenta?",
+                "¿Already have an account?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: white,
-                    fontFamily: 'AkzidenzGrotesk BQ Medium',
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700),
+                    color: white, fontSize: 12, fontWeight: FontWeight.w700),
               ),
               GestureDetector(
                 child: Text(
-                  "INGRESA",
+                  "LOGIN",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: white,
-                      fontFamily: 'AkzidenzGrotesk BQ Medium',
                       fontSize: 12,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w700),

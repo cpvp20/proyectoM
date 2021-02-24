@@ -42,7 +42,7 @@ class _ItemCartState extends State<ItemCart> {
                     style: TextStyle(
                         fontFamily: 'AkzidenzGrotesk BQ Medium',
                         color: Colors.white,
-                        fontSize: 22),
+                        fontSize: 16),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -58,8 +58,8 @@ class _ItemCartState extends State<ItemCart> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
-                            icon: Icon(Icons.add_circle_outline, color: blue),
-                            color: blue,
+                            icon: Icon(Icons.add_circle_outline, color: green),
+                            color: green,
                             onPressed: _addProd),
                         Text("${widget.product.productAmount}",
                             style: TextStyle(
@@ -67,8 +67,8 @@ class _ItemCartState extends State<ItemCart> {
                                 fontSize: 24)),
                         IconButton(
                             icon:
-                                Icon(Icons.remove_circle_outline, color: blue),
-                            color: blue,
+                                Icon(Icons.remove_circle_outline, color: green),
+                            color: green,
                             onPressed: _removeProd),
                         SizedBox(
                           height: 12,

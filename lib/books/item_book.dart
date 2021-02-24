@@ -43,7 +43,7 @@ class _ItemBookState extends State<ItemBook> {
                       "${widget.book.productTitle}",
                       style: TextStyle(
                           fontFamily: 'AkzidenzGrotesk BQ Medium',
-                          fontSize: 22,
+                          fontSize: 16,
                           color: Colors.white),
                     ),
                     Text("\$${widget.book.productPrice}",
@@ -55,8 +55,8 @@ class _ItemBookState extends State<ItemBook> {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5.0),
-                width: 300,
-                height: 300,
+                width: 200,
+                height: 200,
                 child: Image.network(
                   widget.book.productImage,
                 ),

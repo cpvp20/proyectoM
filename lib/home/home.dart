@@ -173,8 +173,8 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(left: 5.0),
                           width: 300,
                           height: 300,
-                          child:
-                              Image.network("https://i.imgur.com/5MZocC1.png"),
+                          child: Image.network(
+                              "https://media.npr.org/assets/img/2020/01/10/book-club-_wide-5affe9c83c7b623193e6250472ea2ebf38f5cd87-s1600-c85.jpg"),
                         ),
                       ],
                     ),
@@ -216,8 +216,8 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(left: 5.0),
                           width: 300,
                           height: 300,
-                          child:
-                              Image.network("https://i.imgur.com/fI7Tezv.png"),
+                          child: Image.network(
+                              "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/stream-broadway-1584627330.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*"),
                         ),
                       ],
                     ),

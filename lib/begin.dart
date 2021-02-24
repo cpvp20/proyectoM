@@ -15,7 +15,7 @@ class BeginPage extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            blue,
+            green,
             black,
           ],
           begin: Alignment.topCenter,
@@ -113,7 +113,7 @@ class BeginPage extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Home(
-                      title: 'Inicio',
+                      title: 'Good Stuff',
                     ),
                   ),
                 );

@@ -38,17 +38,16 @@ class _ItemMovieState extends State<ItemMovie> {
                     Text("Movie", style: TextStyle(fontSize: 15)),
                     Text(
                       "${widget.movie.productTitle}",
-                      style: TextStyle(fontSize: 22, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
-                    Text("\$${widget.movie.productPrice}",
-                        style: TextStyle(fontSize: 24))
+                    Text("95/100", style: TextStyle(fontSize: 24))
                   ],
                 ),
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5.0),
-                width: 300,
-                height: 300,
+                width: 200,
+                height: 200,
                 child: Image.network(
                   widget.movie.productImage,
                 ),

@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.only(top: 100),
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [blue, black],
+                colors: [green, black],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter)),
         child: Padding(
@@ -54,11 +54,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Nombre completo:',
-                    style: TextStyle(
-                        color: white,
-                        fontFamily: 'AkzidenzGrotesk BQ Medium',
-                        fontSize: 12)),
+                child: Text('Full name:',
+                    style: TextStyle(color: white, fontSize: 12)),
               ),
               TextField(
                 controller: _usernameController,
@@ -70,10 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Password:',
-                    style: TextStyle(
-                        color: white,
-                        fontFamily: 'AkzidenzGrotesk BQ Medium',
-                        fontSize: 12)),
+                    style: TextStyle(color: white, fontSize: 12)),
               ),
               TextField(
                 controller: _passwordController,
@@ -114,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => Home(
-                            title: 'Inicio',
+                            title: 'Good stuff',
                           ),
                         ),
                       );
@@ -127,11 +121,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 child: Text(
-                  "¿Olvidaste tu contraseña?",
+                  "Forgot your password? No problem!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: white,
-                    fontFamily: 'AkzidenzGrotesk BQ Medium',
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   ),
@@ -141,22 +134,20 @@ class _LoginPageState extends State<LoginPage> {
                 height: 100,
               ),
               Text(
-                "¿Aún no tienes una cuenta?",
+                "¿Not yet part of our awesome community?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: white,
-                  fontFamily: 'AkzidenzGrotesk BQ Medium',
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               GestureDetector(
                 child: Text(
-                  "REGISTRATE",
+                  "REGISTER",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: white,
-                    fontFamily: 'AkzidenzGrotesk BQ Medium',
                     fontSize: 12,
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.w700,
