@@ -1,0 +1,98 @@
+import 'package:estructura_practica_1/models/product_play.dart';
+import 'package:estructura_practica_1/models/product_movie.dart';
+import 'package:estructura_practica_1/models/product_book.dart';
+
+enum ProductType { MOVIES, BOOKS, PLAYS }
+
+class ProductRepository {
+  static List<dynamic> loadProducts(ProductType prodType) {
+    // ----------------------              ----------------------------//
+    // ----------------------       Tazas      ----------------------------//
+    // ----------------------              ----------------------------//
+
+    if (prodType == ProductType.PLAYS) {
+      return <ProductPlay>[
+        ProductPlay(
+            productTitle: "Flan de Queso",
+            productDescription:
+                "Rico flan napolitano con queso crema sencillo de preparar con pocos ingredientes que tu familia amará.",
+            productImage:
+                "https://cdn.kiwilimon.com/recetaimagen/23418/th5-640x426-16232.jpg",
+            productAmount: 0),
+        ProductPlay(
+            productTitle: "Pay de Platano",
+            productDescription:
+                "Este pay de plátano con crema es el postre perfecto para los amantes del plátano, solo la base del pay va horneada.",
+            productImage:
+                "https://cdn.kiwilimon.com/recetaimagen/971/th5-640x426-19783.jpg",
+            productAmount: 0),
+      ];
+    }
+
+    // ----------------------              ----------------------------//
+    // ----------------------       BOOKSs      ----------------------------//
+    // ----------------------              ----------------------------//
+    if (prodType == ProductType.BOOKS)
+      return <ProductBook>[
+        ProductBook(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productWeight: ProductWeight.KILO,
+          productAmount: 0,
+        ),
+        ProductBook(
+          productTitle: "Lavazza",
+          productDescription: "Endulzado con aromas florales.",
+          productImage:
+              "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
+          productWeight: ProductWeight.KILO,
+          productAmount: 0,
+        ),
+        ProductBook(
+          productTitle: "La Mexicana",
+          productDescription:
+              "Es un café único por la manera en la que están tostados sus BOOKSs.",
+          productImage:
+              "https://www.lamexicana.es/404-large_default/cafe-1890-mezcla-suave.jpg",
+          productWeight: ProductWeight.KILO,
+          productAmount: 0,
+        ),
+      ];
+    // ----------------------              ----------------------------//
+    // ----------------------       Bebida caliente      ----------------------------//
+    // ----------------------              ----------------------------//
+    if (prodType == ProductType.MOVIES)
+      return <ProductMovie>[
+        ProductMovie(
+          productTitle: "Harry Potter and the Philosopher's Stone",
+          productDescription:
+              "Harry Potter and the Philosopher's Stone (released in the United States and India as Harry Potter and the Sorcerer's Stone) is a 2001 fantasy film directed by Chris Columbus and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1997 novel of the same name.",
+          productImage:
+              "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film)#/media/File:Harry_Potter_and_the_Philosopher's_Stone_banner.jpg",
+          productSize: ProductSize.M,
+          productAmount: 0,
+        ),
+        ProductMovie(
+          productTitle: "Harry Potter and the Chamber of Secrets",
+          productDescription:
+              "Harry Potter and the Chamber of Secrets is a 2002 fantasy film directed by Chris Columbus and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1998 novel of the same name. Produced by David Heyman and written by Steve Kloves, it is the sequel to Harry Potter and the Philosopher's Stone (2001) and the second instalment in the Harry Potter film series..",
+          productImage:
+              "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Chamber_of_Secrets_(film)#/media/File:Harry_Potter_and_the_Chamber_of_Secrets_movie.jpg",
+          productSize: ProductSize.M,
+          productAmount: 0,
+        ),
+        ProductMovie(
+          productTitle: "Harry Potter and the Prisoner of Azkaban",
+          productDescription:
+              "Harry Potter and the Prisoner of Azkaban is a 2004 fantasy film directed by Alfonso Cuarón and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1999 novel of the same name.",
+          productImage:
+              "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Prisoner_of_Azkaban_(film)#/media/File:Prisoner_of_azkaban_UK_poster.jpg",
+          productSize: ProductSize.M,
+          productAmount: 0,
+        ),
+      ];
+    return List(); // otherwise empty list
+  }
+}
