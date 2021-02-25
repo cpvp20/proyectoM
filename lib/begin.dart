@@ -12,16 +12,7 @@ class BeginPage extends StatelessWidget {
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.all(30),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            green,
-            black,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
+      color: lightgrey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -32,13 +23,8 @@ class BeginPage extends StatelessWidget {
                 'http://cdn.cnn.com/cnnnext/dam/assets/200505134923-the-good-stuff-special-article-page-logo-large-169.png'),
           ),
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [darkgrey, grey],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter),
-            ),
-            child: GestureDetector(
+            color: lightgrey,
+            child: RaisedButton(
               child: Container(
                 height: 60,
                 child: Center(
@@ -51,7 +37,7 @@ class BeginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () {
+              onPressed: () {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => RegisterPage()));
               },
@@ -61,13 +47,8 @@ class BeginPage extends StatelessWidget {
             height: 50,
           ),
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [darkgrey, grey],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter),
-            ),
-            child: GestureDetector(
+            color: lightgrey,
+            child: RaisedButton(
               child: Container(
                 height: 60,
                 child: Center(
@@ -80,7 +61,7 @@ class BeginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () {
+              onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => LoginPage()));
               },
@@ -90,13 +71,8 @@ class BeginPage extends StatelessWidget {
             height: 50,
           ),
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [darkgrey, grey],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter),
-            ),
-            child: GestureDetector(
+            color: wine,
+            child: RaisedButton(
               child: Container(
                 height: 60,
                 child: Center(
@@ -109,7 +85,7 @@ class BeginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () {
+              onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Home(

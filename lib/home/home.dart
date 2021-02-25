@@ -31,11 +31,11 @@ class _HomeState extends State<Home> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: orange),
+              decoration: BoxDecoration(color: wine),
               accountName: Text(PROFILE_NAME),
               accountEmail: Text(PROFILE_EMAIL),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: grey,
+                backgroundColor: lightgrey,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
                     PROFILE_PICTURE,
@@ -44,14 +44,15 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 16,
+              height: 12,
             ),
             ListTile(
               title: Text(PROFILE_CART),
               leading: Icon(Icons.shopping_cart),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Cart(productsList: cartItems)));
+                  builder: (context) => Cart(productsList: cartItems),
+                ));
               },
             ),
             ListTile(
@@ -73,8 +74,9 @@ class _HomeState extends State<Home> {
               title: Text("LOGOUT"),
               leading: Icon(Icons.logout),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ));
               },
             ),
           ],
@@ -87,146 +89,144 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cart(productsList: cartItems)));
+                builder: (context) => Cart(productsList: cartItems),
+              ));
             },
           )
         ],
-        title: Text("Welcome"),
+        title: Text("Good Stuff"),
       ),
       key: _scaffoldKey,
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 50),
-        children: <Widget>[
-          GestureDetector(
-            onTap: _openMoviesPage,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(30.0),
-                    width: 500,
-                    height: 260,
-                    decoration: BoxDecoration(color: grey, boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0),
-                          blurRadius: 4.0)
-                    ]),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 120,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Movies", style: TextStyle(fontSize: 26)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          width: 300,
-                          height: 300,
-                          child: Image.network(
-                              "https://myfcpl.org/wp-content/uploads/2017/01/movie-night.jpg"),
-                        ),
-                      ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(
+                          "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/w_2560%2Cc_limit/books-521812297.jpg"),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: _openBooksPage,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(30.0),
-                    width: 500,
-                    height: 300,
-                    decoration: BoxDecoration(color: grey, boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0),
-                          blurRadius: 4.0)
-                    ]),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 120,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Books", style: TextStyle(fontSize: 26)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          width: 300,
-                          height: 300,
-                          child: Image.network(
-                              "https://media.npr.org/assets/img/2020/01/10/book-club-_wide-5affe9c83c7b623193e6250472ea2ebf38f5cd87-s1600-c85.jpg"),
-                        ),
-                      ],
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RaisedButton(
+                      onPressed: _openBooksPage,
+                      child: Text(
+                        "Browse All Books",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: _openPlaysPage,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(30.0),
-                    width: 500,
-                    height: 300,
-                    decoration: BoxDecoration(color: grey, boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0),
-                          blurRadius: 4.0)
-                    ]),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 120,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Plays", style: TextStyle(fontSize: 26)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          width: 300,
-                          height: 300,
-                          child: Image.network(
-                              "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/stream-broadway-1584627330.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*"),
-                        ),
-                      ],
+                    RaisedButton(
+                      onPressed: _openBooksPage,
+                      child: Text(
+                        "My list of Books To Read",
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                    RaisedButton(
+                      onPressed: _openBooksPage,
+                      child: Text(
+                        "Books Read by Me",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(
+                          "https://myfcpl.org/wp-content/uploads/2017/01/movie-night.jpg"),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RaisedButton(
+                      onPressed: _openMoviesPage,
+                      child: Text(
+                        "Browse All Movies",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: _openMoviesPage,
+                      child: Text(
+                        "My list of Movies To Watch",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: _openMoviesPage,
+                      child: Text(
+                        "Movies Watched by Me",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(
+                          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/stream-broadway-1584627330.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*"),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RaisedButton(
+                      onPressed: _openPlaysPage,
+                      child: Text(
+                        "Browse All Plays",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: _openPlaysPage,
+                      child: Text(
+                        "My list of Plays To See",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: _openPlaysPage,
+                      child: Text(
+                        "Plays Seen by Me",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

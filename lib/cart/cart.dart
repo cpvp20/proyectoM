@@ -20,7 +20,9 @@ class _CartState extends State<Cart> {
   void initState() {
     super.initState();
     for (var item in widget.productsList) {
-      _total += (item.productPrice * item.productAmount);
+      int i = 0;
+      _total += i;
+      i++;
     }
   }
 
@@ -29,7 +31,7 @@ class _CartState extends State<Cart> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Lista de Compras"),
+        title: Text("To Do List"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 50),
@@ -45,30 +47,16 @@ class _CartState extends State<Cart> {
                     itemBuilder: (BuildContext context, int index) {
                       return Stack(children: [
                         ItemCart(
-                          onAmountUpdated: _priceUpdate,
                           product: widget.productsList[index],
                         ),
                         Positioned(
                             top: 30,
                             right: 30,
-                            child: widget.productsList[index].product.liked
-                                ? Icon(Icons.favorite, color: green)
-                                : Icon(Icons.favorite_border, color: green)),
-                        Positioned(
-                            bottom: 12,
-                            right: 18,
-                            child: IconButton(
-                              onPressed: () {
-                                _priceUpdate(widget
-                                        .productsList[index].productPrice *
-                                    widget.productsList[index].productAmount *
-                                    -1);
-                                widget.productsList.removeAt(index);
-                                setState(() {});
-                              },
-                              icon: Icon(Icons.delete),
-                              color: green,
-                            ))
+                            child:
+                                widget.productsList[index].product.status == 1
+                                    ? Icon(Icons.favorite, color: lightgrey)
+                                    : Icon(Icons.favorite_border,
+                                        color: lightgrey)),
                       ]);
                     },
                   ),
@@ -80,36 +68,25 @@ class _CartState extends State<Cart> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-              child: Text("Total",
-                  style: TextStyle(
-                      fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 20)),
+              child: Text("Total", style: TextStyle(fontSize: 20)),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-              child: Text("$_total MX\$",
-                  style: TextStyle(
-                      fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 30)),
+              child: Text("$_total MX\$", style: TextStyle(fontSize: 30)),
             ),
             SizedBox(
               height: 14,
             ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                gradient: LinearGradient(
-                    colors: [darkgrey, grey],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter),
-              ),
+              color: lightgrey,
               child: GestureDetector(
                 child: Container(
                   height: 40,
                   child: Center(
                     child: Text(
-                      "PAGAR",
+                      "Back",
                       style: TextStyle(
-                          fontFamily: 'AkzidenzGrotesk BQ Medium',
                           fontSize: 14,
                           color: black,
                           fontWeight: FontWeight.w100),
@@ -123,11 +100,5 @@ class _CartState extends State<Cart> {
         ),
       ),
     );
-  }
-
-  void _priceUpdate(double newItemPrice) {
-    setState(() {
-      _total += newItemPrice;
-    });
   }
 }

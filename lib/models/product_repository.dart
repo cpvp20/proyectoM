@@ -7,25 +7,43 @@ enum ProductType { MOVIES, BOOKS, PLAYS }
 class ProductRepository {
   static List<dynamic> loadProducts(ProductType prodType) {
     // ----------------------              ----------------------------//
-    // ----------------------       Tazas      ----------------------------//
+    // ----------------------       Plays      ----------------------------//
     // ----------------------              ----------------------------//
 
     if (prodType == ProductType.PLAYS) {
       return <ProductPlay>[
         ProductPlay(
-            productTitle: "Flan de Queso",
-            productDescription:
-                "Rico flan napolitano con queso crema sencillo de preparar con pocos ingredientes que tu familia amará.",
-            productImage:
-                "https://cdn.kiwilimon.com/recetaimagen/23418/th5-640x426-16232.jpg",
-            productAmount: 0),
+          productTitle: "Wicked",
+          productDescription:
+              "Wicked is a Broadway musical, with music and lyrics by Stephen Schwartz and book by Winnie Holzman. It is based on the 1995 Gregory Maguire novel Wicked: The Life and Times of the Wicked Witch of the West, itself a retelling of the classic 1900 novel, The Wonderful Wizard of Oz by L. Frank Baum and the 1939 Metro-Goldwyn-Mayer film The Wizard of Oz.",
+          productImage:
+              "http://www.thejeffersonchronicle.com/wp-content/uploads/2017/05/wicked.jpg",
+          productRating: 100,
+        ),
         ProductPlay(
-            productTitle: "Pay de Platano",
-            productDescription:
-                "Este pay de plátano con crema es el postre perfecto para los amantes del plátano, solo la base del pay va horneada.",
-            productImage:
-                "https://cdn.kiwilimon.com/recetaimagen/971/th5-640x426-19783.jpg",
-            productAmount: 0),
+          productTitle: "Wicked",
+          productDescription:
+              "Wicked is a Broadway musical, with music and lyrics by Stephen Schwartz and book by Winnie Holzman. It is based on the 1995 Gregory Maguire novel Wicked: The Life and Times of the Wicked Witch of the West, itself a retelling of the classic 1900 novel, The Wonderful Wizard of Oz by L. Frank Baum and the 1939 Metro-Goldwyn-Mayer film The Wizard of Oz.",
+          productImage:
+              "http://www.thejeffersonchronicle.com/wp-content/uploads/2017/05/wicked.jpg",
+          productRating: 100,
+        ),
+        ProductPlay(
+          productTitle: "Wicked",
+          productDescription:
+              "Wicked is a Broadway musical, with music and lyrics by Stephen Schwartz and book by Winnie Holzman. It is based on the 1995 Gregory Maguire novel Wicked: The Life and Times of the Wicked Witch of the West, itself a retelling of the classic 1900 novel, The Wonderful Wizard of Oz by L. Frank Baum and the 1939 Metro-Goldwyn-Mayer film The Wizard of Oz.",
+          productImage:
+              "http://www.thejeffersonchronicle.com/wp-content/uploads/2017/05/wicked.jpg",
+          productRating: 100,
+        ),
+        ProductPlay(
+          productTitle: "Wicked",
+          productDescription:
+              "Wicked is a Broadway musical, with music and lyrics by Stephen Schwartz and book by Winnie Holzman. It is based on the 1995 Gregory Maguire novel Wicked: The Life and Times of the Wicked Witch of the West, itself a retelling of the classic 1900 novel, The Wonderful Wizard of Oz by L. Frank Baum and the 1939 Metro-Goldwyn-Mayer film The Wizard of Oz.",
+          productImage:
+              "http://www.thejeffersonchronicle.com/wp-content/uploads/2017/05/wicked.jpg",
+          productRating: 100,
+        ),
       ];
     }
 
@@ -39,16 +57,14 @@ class ProductRepository {
           productDescription: "Endulzado con aromas florales.",
           productImage:
               "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
-          productWeight: ProductWeight.KILO,
-          productAmount: 0,
+          productRating: 97.0,
         ),
         ProductBook(
           productTitle: "Lavazza",
           productDescription: "Endulzado con aromas florales.",
           productImage:
               "https://www.lavazza.it/content/dam/lavazza/products/caffe/macinato/moka/qualitaoro/new_render/tin_250_en/Tin-oro-en-250-thumb.png",
-          productWeight: ProductWeight.KILO,
-          productAmount: 0,
+          productRating: 97.0,
         ),
         ProductBook(
           productTitle: "La Mexicana",
@@ -56,8 +72,7 @@ class ProductRepository {
               "Es un café único por la manera en la que están tostados sus BOOKSs.",
           productImage:
               "https://www.lamexicana.es/404-large_default/cafe-1890-mezcla-suave.jpg",
-          productWeight: ProductWeight.KILO,
-          productAmount: 0,
+          productRating: 97.0,
         ),
       ];
     // ----------------------              ----------------------------//
@@ -71,8 +86,7 @@ class ProductRepository {
               "Harry Potter and the Philosopher's Stone (released in the United States and India as Harry Potter and the Sorcerer's Stone) is a 2001 fantasy film directed by Chris Columbus and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1997 novel of the same name.",
           productImage:
               "https://m.media-amazon.com/images/M/MV5BNjQ3NWNlNmQtMTE5ZS00MDdmLTlkZjUtZTBlM2UxMGFiMTU3XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          productSize: ProductSize.M,
-          productAmount: 0,
+          productRating: 99,
         ),
         ProductMovie(
           productTitle: "Harry Potter and the Chamber of Secrets",
@@ -80,8 +94,7 @@ class ProductRepository {
               "Harry Potter and the Chamber of Secrets is a 2002 fantasy film directed by Chris Columbus and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1998 novel of the same name. Produced by David Heyman and written by Steve Kloves, it is the sequel to Harry Potter and the Philosopher's Stone (2001) and the second instalment in the Harry Potter film series..",
           productImage:
               "https://m.media-amazon.com/images/M/MV5BMTcxODgwMDkxNV5BMl5BanBnXkFtZTYwMDk2MDg3._V1_UX182_CR0,0,182,268_AL_.jpg",
-          productSize: ProductSize.M,
-          productAmount: 0,
+          productRating: 99,
         ),
         ProductMovie(
           productTitle: "Harry Potter and the Prisoner of Azkaban",
@@ -89,8 +102,15 @@ class ProductRepository {
               "Harry Potter and the Prisoner of Azkaban is a 2004 fantasy film directed by Alfonso Cuarón and distributed by Warner Bros. Pictures, based on J. K. Rowling's 1999 novel of the same name.",
           productImage:
               "https://m.media-amazon.com/images/M/MV5BMTY4NTIwODg0N15BMl5BanBnXkFtZTcwOTc0MjEzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          productSize: ProductSize.M,
-          productAmount: 0,
+          productRating: 99,
+        ),
+        ProductMovie(
+          productTitle: "Harry Potter and the Goblet of Fire",
+          productDescription:
+              "Harry Potter and the Goblet of Fire is a 2005 fantasy film directed by Mike Newell and distributed by Warner Bros. Pictures, based on J. K. Rowling's 2000 novel of the same name.",
+          productImage:
+              "https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          productRating: 99,
         ),
       ];
     return List(); // otherwise empty list

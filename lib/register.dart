@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool conditions = false;
-  Color iconColor = Colors.grey;
+  Color iconColor = lightgrey;
 
   bool obscureText = true;
 
@@ -41,12 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
         body: Container(
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.only(top: 100),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [green, black],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter),
-      ),
+      color: lightgrey,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
@@ -63,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Full name:',
                     style: TextStyle(
-                        color: white,
+                        color: black,
                         fontFamily: 'AkzidenzGrotesk BQ Medium',
                         fontSize: 12)),
               ),
@@ -78,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Email:',
                     style: TextStyle(
-                        color: white,
+                        color: black,
                         fontFamily: 'AkzidenzGrotesk BQ Medium',
                         fontSize: 12)),
               ),
@@ -93,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Password:',
                     style: TextStyle(
-                        color: white,
+                        color: black,
                         fontFamily: 'AkzidenzGrotesk BQ Medium',
                         fontSize: 12)),
               ),
@@ -101,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _passwordController,
                 onChanged: _checkConditions(),
                 style: TextStyle(
-                    color: white, fontFamily: 'AkzidenzGrotesk BQ Medium'),
+                    color: black, fontFamily: 'AkzidenzGrotesk BQ Medium'),
                 decoration: InputDecoration(
                     filled: false,
                     suffixIcon: IconButton(
@@ -109,9 +104,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           setState(() {
                             obscureText = !obscureText;
                             if (obscureText) {
-                              iconColor = Colors.grey;
+                              iconColor = lightgrey;
                             } else {
-                              iconColor = white;
+                              iconColor = black;
                             }
                           });
                         },
@@ -121,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
               CheckboxListTile(
                 title: Text(
                   'I ACCEPT TERMS AND CONDITIONS',
-                  style: TextStyle(color: Colors.grey[200], fontSize: 10),
+                  style: TextStyle(color: lightgrey, fontSize: 10),
                 ),
                 value: checked,
                 onChanged: (newValue) {
@@ -135,14 +130,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 20,
               ),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  gradient: LinearGradient(
-                      colors: [darkgrey, grey],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter),
-                ),
-                child: GestureDetector(
+                color: lightgrey,
+                child: RaisedButton(
                   child: Container(
                     height: 70,
                     child: Center(
@@ -155,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  onTap: () {
+                  onPressed: () {
                     if (conditions) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -175,19 +164,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 "¿Already have an account?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: white, fontSize: 12, fontWeight: FontWeight.w700),
+                    color: black, fontSize: 12, fontWeight: FontWeight.w700),
               ),
-              GestureDetector(
+              RaisedButton(
                 child: Text(
                   "LOGIN",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: white,
+                      color: black,
                       fontSize: 12,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w700),
                 ),
-                onTap: () {
+                onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => LoginPage()));
                 },

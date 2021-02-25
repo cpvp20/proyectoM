@@ -23,10 +23,6 @@ class _ItemPlayState extends State<ItemPlay> {
           padding: const EdgeInsets.all(30.0),
           width: 500,
           height: 260,
-          decoration: BoxDecoration(color: grey, boxShadow: [
-            BoxShadow(
-                color: Colors.grey, offset: Offset(0.0, 1.0), blurRadius: 4.0)
-          ]),
           child: Row(
             children: [
               Container(
@@ -44,9 +40,9 @@ class _ItemPlayState extends State<ItemPlay> {
                       style: TextStyle(
                           fontFamily: 'AkzidenzGrotesk BQ Medium',
                           fontSize: 16,
-                          color: Colors.white),
+                          color: darkgrey),
                     ),
-                    Text("\$${widget.play.productPrice}",
+                    Text("\$${widget.play.productRating}",
                         style: TextStyle(
                             fontFamily: 'AkzidenzGrotesk BQ Medium',
                             fontSize: 24))
@@ -68,7 +64,7 @@ class _ItemPlayState extends State<ItemPlay> {
           top: 10,
           right: 12,
           child: Container(
-              child: widget.play.liked
+              child: widget.play.status == 2
                   ? Icon(Icons.favorite)
                   : Icon(Icons.favorite_border)),
         )

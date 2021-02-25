@@ -36,11 +36,7 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(top: 100),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [green, black],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+        color: lightgrey,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -55,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Full name:',
-                    style: TextStyle(color: white, fontSize: 12)),
+                    style: TextStyle(color: black, fontSize: 12)),
               ),
               TextField(
                 controller: _usernameController,
@@ -67,13 +63,13 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Password:',
-                    style: TextStyle(color: white, fontSize: 12)),
+                    style: TextStyle(color: black, fontSize: 12)),
               ),
               TextField(
                 controller: _passwordController,
                 onChanged: _checkConditions(),
                 style: TextStyle(
-                    color: white, fontFamily: 'AkzidenzGrotesk BQ Medium'),
+                    color: black, fontFamily: 'AkzidenzGrotesk BQ Medium'),
                 decoration: InputDecoration(
                   filled: false,
                 ),
@@ -83,14 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
               ),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  gradient: LinearGradient(
-                      colors: [darkgrey, grey],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter),
-                ),
-                child: GestureDetector(
+                color: lightgrey,
+                child: RaisedButton(
                   child: Container(
                     height: 70,
                     child: Center(
@@ -103,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  onTap: () {
+                  onPressed: () {
                     if (conditions) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -124,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                   "Forgot your password? No problem!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: white,
+                    color: black,
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   ),
@@ -137,23 +127,23 @@ class _LoginPageState extends State<LoginPage> {
                 "¿Not yet part of our awesome community?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: white,
+                  color: black,
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              GestureDetector(
+              RaisedButton(
                 child: Text(
                   "REGISTER",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: white,
+                    color: black,
                     fontSize: 12,
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                onTap: () {
+                onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => RegisterPage()));
                 },

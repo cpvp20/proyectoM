@@ -23,10 +23,6 @@ class _ItemMovieState extends State<ItemMovie> {
           padding: const EdgeInsets.all(30.0),
           width: 500,
           height: 260,
-          decoration: BoxDecoration(color: grey, boxShadow: [
-            BoxShadow(
-                color: Colors.grey, offset: Offset(0.0, 1.0), blurRadius: 4.0)
-          ]),
           child: Row(
             children: [
               Container(
@@ -38,7 +34,7 @@ class _ItemMovieState extends State<ItemMovie> {
                     Text("Movie", style: TextStyle(fontSize: 15)),
                     Text(
                       "${widget.movie.productTitle}",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: darkgrey),
                     ),
                     Text("95/100", style: TextStyle(fontSize: 24))
                   ],
@@ -55,14 +51,6 @@ class _ItemMovieState extends State<ItemMovie> {
             ],
           ),
         ),
-        Positioned(
-          top: 10,
-          right: 12,
-          child: Container(
-              child: widget.movie.liked
-                  ? Icon(Icons.favorite)
-                  : Icon(Icons.favorite_border)),
-        )
       ]),
     );
   }

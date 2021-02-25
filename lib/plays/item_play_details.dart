@@ -15,7 +15,6 @@ class PlayDetails extends StatefulWidget {
 }
 
 class _PlayDetailsState extends State<PlayDetails> {
-//los PLAYS no tienen sizes obviamente
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +32,7 @@ class _PlayDetailsState extends State<PlayDetails> {
             ),
             Stack(alignment: Alignment.center, children: [
               Container(
-                color: orange,
+                color: wine,
                 width: 230,
                 height: 230,
               ),
@@ -48,11 +47,11 @@ class _PlayDetailsState extends State<PlayDetails> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.play.liked = !widget.play.liked;
+                      widget.play.status = widget.play.status;
                     });
                   },
                   child: Container(
-                      child: widget.play.liked
+                      child: widget.play.status == 1
                           ? Icon(Icons.favorite)
                           : Icon(Icons.favorite_border)),
                 ),
@@ -61,20 +60,18 @@ class _PlayDetailsState extends State<PlayDetails> {
             SizedBox(height: 14),
             Text(
               widget.play.productTitle,
-              style: TextStyle(
-                  fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 25),
+              style: TextStyle(fontSize: 25),
             ),
             SizedBox(height: 14),
             Text(widget.play.productDescription,
-                style: TextStyle(
-                    fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 18)),
+                style: TextStyle(fontSize: 18)),
             SizedBox(height: 14),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("            "),
-                Text("\$${widget.play.productPrice}",
+                Text("RATING"),
+                Text("\$${widget.play.productRating}",
                     style: TextStyle(
                         fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 30))
               ],
@@ -84,33 +81,39 @@ class _PlayDetailsState extends State<PlayDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaisedButton(
-                    child: Text("ADD TO MY LIST",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 12,
-                            color: Colors.white)),
+                    child: Text("WANT TO SEE",
+                        style: TextStyle(fontSize: 12, color: Colors.white)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     onPressed: () {
                       widget.cartItems.add(ProductItemCart(
                           productTitle: widget.play.productTitle,
-                          productAmount: 1,
-                          productPrice: widget.play.productPrice,
+                          productRating: widget.play.productRating,
                           product: widget.play,
                           productImage: widget.play.productImage,
                           typeOfProduct: ProductType.PLAYS));
                     }),
                 RaisedButton(
-                  child: Text("COMPRAR AHORA",
-                      style: TextStyle(
-                          fontFamily: 'AkzidenzGrotesk BQ Medium',
-                          fontSize: 12,
-                          color: Colors.white)),
+                  child: Text("SEEN ALREADY",
+                      style: TextStyle(fontSize: 12, color: Colors.white)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   onPressed: () {},
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.location_history),
+                      tooltip: 'Find showtimes near me',
+                      onPressed: () {
+                        setState(() {});
+                      },
+                    ),
+                    Text('Find showtimes near me')
+                  ],
                 ),
               ],
             )

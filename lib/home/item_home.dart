@@ -24,7 +24,7 @@ class ItemHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
-              color: green,
+              color: lightgrey,
               child: Container(height: 180),
             ),
           ),
@@ -32,7 +32,7 @@ class ItemHome extends StatelessWidget {
             height: 160,
             margin: EdgeInsets.only(top: 28, bottom: 24, left: 24, right: 24),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: lightgrey,
               borderRadius: BorderRadius.all(
                 Radius.circular(30),
               ),

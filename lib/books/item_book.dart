@@ -23,10 +23,6 @@ class _ItemBookState extends State<ItemBook> {
           padding: const EdgeInsets.all(30.0),
           width: 500,
           height: 260,
-          decoration: BoxDecoration(color: grey, boxShadow: [
-            BoxShadow(
-                color: Colors.grey, offset: Offset(0.0, 1.0), blurRadius: 4.0)
-          ]),
           child: Row(
             children: [
               Container(
@@ -44,9 +40,9 @@ class _ItemBookState extends State<ItemBook> {
                       style: TextStyle(
                           fontFamily: 'AkzidenzGrotesk BQ Medium',
                           fontSize: 16,
-                          color: Colors.white),
+                          color: darkgrey),
                     ),
-                    Text("\$${widget.book.productPrice}",
+                    Text("\$${widget.book.productRating}",
                         style: TextStyle(
                             fontFamily: 'AkzidenzGrotesk BQ Medium',
                             fontSize: 24))
@@ -68,7 +64,7 @@ class _ItemBookState extends State<ItemBook> {
           top: 10,
           right: 12,
           child: Container(
-              child: widget.book.liked
+              child: widget.book.status == 1
                   ? Icon(Icons.favorite)
                   : Icon(Icons.favorite_border)),
         )
