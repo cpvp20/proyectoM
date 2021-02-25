@@ -1,6 +1,6 @@
+import 'package:estructura_practica_1/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/models/product_play.dart';
-import 'package:estructura_practica_1/colors.dart';
 
 class ItemPlay extends StatefulWidget {
   final ProductPlay play;
@@ -31,21 +31,12 @@ class _ItemPlayState extends State<ItemPlay> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Play",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 15)),
+                    Text("play", style: TextStyle(fontSize: 15)),
                     Text(
                       "${widget.play.productTitle}",
-                      style: TextStyle(
-                          fontFamily: 'AkzidenzGrotesk BQ Medium',
-                          fontSize: 16,
-                          color: darkgrey),
+                      style: TextStyle(fontSize: 16, color: darkgrey),
                     ),
-                    Text("\$${widget.play.productRating}",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 24))
+                    Text("95/100", style: TextStyle(fontSize: 24))
                   ],
                 ),
               ),
@@ -60,14 +51,6 @@ class _ItemPlayState extends State<ItemPlay> {
             ],
           ),
         ),
-        Positioned(
-          top: 10,
-          right: 12,
-          child: Container(
-              child: widget.play.status == 2
-                  ? Icon(Icons.favorite)
-                  : Icon(Icons.favorite_border)),
-        )
       ]),
     );
   }
