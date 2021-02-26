@@ -113,6 +113,6 @@ class ProductRepository {
           productRating: 99,
         ),
       ];
-    return List(); // otherwise empty list
+    return []; // otherwise empty list
   }
 }

@@ -19,7 +19,7 @@ class _CartState extends State<Cart> {
   @override
   void initState() {
     super.initState();
-    for (var item in widget.productsList) {
+    for (var _ in widget.productsList) {
       int i = 0;
       _total += i;
       i++;

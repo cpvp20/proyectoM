@@ -1,5 +1,4 @@
 import 'package:proyectoM/colors.dart';
-import 'package:proyectoM/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
 class ItemCart extends StatefulWidget {

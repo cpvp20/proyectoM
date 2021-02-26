@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool obscureText = true;
 
-  Function _checkConditions() {
+  _checkConditions() {
     if (checked &&
         _passwordController.text.length != 0 &&
         _usernameController.text.length != 0 &&
