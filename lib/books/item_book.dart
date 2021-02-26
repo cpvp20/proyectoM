@@ -34,12 +34,16 @@ class _ItemBookState extends State<ItemBook> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("${widget.book.productTitle}",
-                        style: TextStyle(fontSize: 18)),
+                        style: Theme.of(context).textTheme.headline2),
                     Text(
                       "${widget.book.productDescription.substring(0, 70)}...",
-                      style: TextStyle(fontSize: 16, color: darkgrey),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    Text("Rating:", style: TextStyle(fontSize: 18)),
+                    Text("Rating:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(fontSize: 18.0)),
                     Row(
                       children: _ratingToStars(widget.book.productRating),
                     )

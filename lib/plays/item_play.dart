@@ -34,20 +34,16 @@ class _ItemPlayState extends State<ItemPlay> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("${widget.play.productTitle}",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 18)),
+                        style: Theme.of(context).textTheme.headline2),
                     Text(
                       "${widget.play.productDescription.substring(0, 70)}...",
-                      style: TextStyle(
-                          fontFamily: 'AkzidenzGrotesk BQ Medium',
-                          fontSize: 16,
-                          color: darkgrey),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text("Rating:",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 18)),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(fontSize: 18.0)),
                     Row(
                       children: _ratingToStars(widget.play.productRating),
                     )

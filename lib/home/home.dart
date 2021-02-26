@@ -122,21 +122,24 @@ class _HomeState extends State<Home> {
                       onPressed: _openBooksPage,
                       child: Text(
                         "Browse All Books",
-                        style: TextStyle(fontSize: 20),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(color: secondary),
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openBooksPage,
                       child: Text(
                         "My list of Books To Read",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openBooksPage,
                       child: Text(
                         "Books Read by Me",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                   ],
@@ -163,21 +166,24 @@ class _HomeState extends State<Home> {
                       onPressed: _openMoviesPage,
                       child: Text(
                         "Browse All Movies",
-                        style: TextStyle(fontSize: 20),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(color: secondary),
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openMoviesPage,
                       child: Text(
                         "My list of Movies To Watch",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openMoviesPage,
                       child: Text(
                         "Movies Watched by Me",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                   ],
@@ -204,21 +210,24 @@ class _HomeState extends State<Home> {
                       onPressed: _openPlaysPage,
                       child: Text(
                         "Browse All Plays",
-                        style: TextStyle(fontSize: 20),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(color: secondary),
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openPlaysPage,
                       child: Text(
                         "My list of Plays To See",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                     ElevatedButton(
                       onPressed: _openPlaysPage,
                       child: Text(
                         "Plays Seen by Me",
-                        style: TextStyle(fontSize: 12),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                     ),
                   ],

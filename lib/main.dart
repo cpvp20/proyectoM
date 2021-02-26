@@ -35,10 +35,12 @@ class MyApp extends StatelessWidget {
         fontFamily: 'AkzidenzGrotesk',
         textTheme: TextTheme(
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          headline2: TextStyle(fontSize: 20.0, color: dark),
+          headline3: TextStyle(fontSize: 12.0, color: secondary),
           headline4: TextStyle(
               fontSize: 14, fontWeight: FontWeight.w800, color: secondary),
           headline6: TextStyle(color: black, fontSize: 12),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          bodyText1: TextStyle(fontSize: 16, color: darkgrey),
         ),
       ),
     );
