@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Full name:',
-                    style: TextStyle(color: black, fontSize: 12)),
+                    style: Theme.of(context).textTheme.headline6),
               ),
               TextField(
                 controller: _usernameController,
@@ -63,12 +63,12 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Password:',
-                    style: TextStyle(color: black, fontSize: 12)),
+                    style: Theme.of(context).textTheme.headline6),
               ),
               TextField(
                 controller: _passwordController,
                 onChanged: _checkConditions(),
-                style: TextStyle(color: black),
+                style: Theme.of(context).textTheme.headline6,
                 decoration: InputDecoration(
                   filled: false,
                 ),
@@ -85,10 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Center(
                       child: Text(
                         "LOGIN",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: black,
-                            fontWeight: FontWeight.w700),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
                   ),
@@ -135,12 +132,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "REGISTER",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: black,
-                    fontSize: 12,
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(decoration: TextDecoration.underline),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
