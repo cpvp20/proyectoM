@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectoM/utils/constants.dart';
 import 'begin.dart';
+import 'colors.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,16 +14,23 @@ class MyApp extends StatelessWidget {
       title: APP_TITLE,
       home: BeginPage(),
       theme: ThemeData(
-          unselectedWidgetColor: Colors.white,
+          primaryColor: primary,
+          secondaryHeaderColor: secondary,
+          unselectedWidgetColor: white,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  textStyle:
+                      MaterialStateProperty.all(TextStyle(color: secondary)),
+                  backgroundColor: MaterialStateProperty.all(primary))),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(0.0),
-                borderSide: BorderSide(color: Colors.white, width: 1.0)),
+                borderSide: BorderSide(color: white, width: 1.0)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(0.0),
-                borderSide: BorderSide(color: Colors.white, width: 1.0)),
+                borderSide: BorderSide(color: white, width: 1.0)),
           ),
           fontFamily: 'AkzidenzGrotesk'),
     );
