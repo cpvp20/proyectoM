@@ -1,4 +1,3 @@
-import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:proyectoM/utils/constants.dart';
 import 'begin.dart';

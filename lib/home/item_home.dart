@@ -1,5 +1,5 @@
-import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
+import '../colors.dart';
 
 class ItemHome extends StatelessWidget {
   final String title;
@@ -43,7 +43,7 @@ class ItemHome extends StatelessWidget {
                   margin: EdgeInsets.only(left: 16),
                   width: 160,
                   decoration: BoxDecoration(
-                    color: Colors.third[300],
+                    color: third,
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
