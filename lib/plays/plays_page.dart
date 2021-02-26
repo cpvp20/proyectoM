@@ -1,8 +1,8 @@
-import 'package:estructura_practica_1/cart/cart.dart';
-import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:proyectoM/cart/cart.dart';
+import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/plays/item_play.dart';
-import 'package:estructura_practica_1/models/product_play.dart';
+import 'package:proyectoM/plays/item_play.dart';
+import 'package:proyectoM/models/product_play.dart';
 
 import 'item_play_details.dart';
 

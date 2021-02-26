@@ -1,7 +1,7 @@
-import 'package:estructura_practica_1/colors.dart';
-import 'package:estructura_practica_1/home/home.dart';
-import 'package:estructura_practica_1/login.dart';
-import 'package:estructura_practica_1/register.dart';
+import 'package:proyectoM/colors.dart';
+import 'package:proyectoM/home/home.dart';
+import 'package:proyectoM/login.dart';
+import 'package:proyectoM/register.dart';
 import 'package:flutter/material.dart';
 
 class BeginPage extends StatelessWidget {

@@ -1,9 +1,9 @@
-import 'package:estructura_practica_1/cart/cart.dart';
-import 'package:estructura_practica_1/movies/item_movie_details.dart';
-import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:proyectoM/cart/cart.dart';
+import 'package:proyectoM/movies/item_movie_details.dart';
+import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/movies/item_movie.dart';
-import 'package:estructura_practica_1/models/product_movie.dart';
+import 'package:proyectoM/movies/item_movie.dart';
+import 'package:proyectoM/models/product_movie.dart';
 
 class MoviesPage extends StatefulWidget {
   final List<ProductMovie> moviesList;

@@ -1,6 +1,6 @@
-import 'package:estructura_practica_1/colors.dart';
+import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/models/product_play.dart';
+import 'package:proyectoM/models/product_play.dart';
 
 class ItemPlay extends StatefulWidget {
   final ProductPlay play;

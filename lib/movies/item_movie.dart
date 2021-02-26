@@ -1,6 +1,6 @@
-import 'package:estructura_practica_1/colors.dart';
+import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/models/product_movie.dart';
+import 'package:proyectoM/models/product_movie.dart';
 
 class ItemMovie extends StatefulWidget {
   final ProductMovie movie;

@@ -1,7 +1,7 @@
-import 'package:estructura_practica_1/colors.dart';
-import 'package:estructura_practica_1/models/product_play.dart';
-import 'package:estructura_practica_1/models/product_item_cart.dart';
-import 'package:estructura_practica_1/models/product_repository.dart';
+import 'package:proyectoM/colors.dart';
+import 'package:proyectoM/models/product_play.dart';
+import 'package:proyectoM/models/product_item_cart.dart';
+import 'package:proyectoM/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
 class PlayDetails extends StatefulWidget {

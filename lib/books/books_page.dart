@@ -1,9 +1,9 @@
-import 'package:estructura_practica_1/cart/cart.dart';
-import 'package:estructura_practica_1/books/item_book_details.dart';
-import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:proyectoM/cart/cart.dart';
+import 'package:proyectoM/books/item_book_details.dart';
+import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/books/item_book.dart';
-import 'package:estructura_practica_1/models/product_book.dart';
+import 'package:proyectoM/books/item_book.dart';
+import 'package:proyectoM/models/product_book.dart';
 
 class BooksPage extends StatefulWidget {
   final List<ProductBook> booksList;

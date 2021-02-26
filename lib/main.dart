@@ -1,6 +1,6 @@
-import 'package:estructura_practica_1/colors.dart';
+import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/utils/constants.dart';
+import 'package:proyectoM/utils/constants.dart';
 import 'begin.dart';
 
 void main() => runApp(MyApp());

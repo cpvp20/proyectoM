@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:estructura_practica_1/models/product_repository.dart';
+import 'package:proyectoM/models/product_repository.dart';
 
 class ProductItemCart {
   String productTitle;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/models/product_book.dart';
-import 'package:estructura_practica_1/colors.dart';
+import 'package:proyectoM/models/product_book.dart';
+import 'package:proyectoM/colors.dart';
 
 class ItemBook extends StatefulWidget {
   final ProductBook book;

@@ -1,4 +1,4 @@
-package mx.iteso.practica.uno.estructura_practica_1
+package mx.iteso.practica.uno.proyectoM
 
 import io.flutter.embedding.android.FlutterActivity
 

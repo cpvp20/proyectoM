@@ -1,13 +1,13 @@
-import 'package:estructura_practica_1/cart/cart.dart';
-import 'package:estructura_practica_1/books/books_page.dart';
-import 'package:estructura_practica_1/movies/movies_page.dart';
-import 'package:estructura_practica_1/plays/plays_page.dart';
-import 'package:estructura_practica_1/login.dart';
-import 'package:estructura_practica_1/models/product_item_cart.dart';
-import 'package:estructura_practica_1/models/product_repository.dart';
-import 'package:estructura_practica_1/utils/constants.dart';
+import 'package:proyectoM/cart/cart.dart';
+import 'package:proyectoM/books/books_page.dart';
+import 'package:proyectoM/movies/movies_page.dart';
+import 'package:proyectoM/plays/plays_page.dart';
+import 'package:proyectoM/login.dart';
+import 'package:proyectoM/models/product_item_cart.dart';
+import 'package:proyectoM/models/product_repository.dart';
+import 'package:proyectoM/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:estructura_practica_1/colors.dart';
+import 'package:proyectoM/colors.dart';
 
 class Home extends StatefulWidget {
   final String title;
