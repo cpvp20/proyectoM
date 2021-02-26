@@ -131,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 color: secondary,
-                child: RaisedButton(
+                child: ElevatedButton(
                   child: Container(
                     height: 70,
                     child: Center(
@@ -166,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(
                     color: black, fontSize: 12, fontWeight: FontWeight.w700),
               ),
-              RaisedButton(
+              ElevatedButton(
                 child: Text(
                   "LOGIN",
                   textAlign: TextAlign.center,

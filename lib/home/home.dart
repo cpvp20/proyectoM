@@ -118,21 +118,21 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openBooksPage,
                       child: Text(
                         "Browse All Books",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openBooksPage,
                       child: Text(
                         "My list of Books To Read",
                         style: TextStyle(fontSize: 12),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openBooksPage,
                       child: Text(
                         "Books Read by Me",
@@ -159,21 +159,21 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openMoviesPage,
                       child: Text(
                         "Browse All Movies",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openMoviesPage,
                       child: Text(
                         "My list of Movies To Watch",
                         style: TextStyle(fontSize: 12),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openMoviesPage,
                       child: Text(
                         "Movies Watched by Me",
@@ -200,21 +200,21 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openPlaysPage,
                       child: Text(
                         "Browse All Plays",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openPlaysPage,
                       child: Text(
                         "My list of Plays To See",
                         style: TextStyle(fontSize: 12),
                       ),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _openPlaysPage,
                       child: Text(
                         "Plays Seen by Me",

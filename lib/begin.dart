@@ -24,7 +24,7 @@ class BeginPage extends StatelessWidget {
           ),
           Container(
             color: secondary,
-            child: RaisedButton(
+            child: ElevatedButton(
               child: Container(
                 height: 60,
                 child: Center(
@@ -48,7 +48,7 @@ class BeginPage extends StatelessWidget {
           ),
           Container(
             color: secondary,
-            child: RaisedButton(
+            child: ElevatedButton(
               child: Container(
                 height: 60,
                 child: Center(
@@ -72,7 +72,7 @@ class BeginPage extends StatelessWidget {
           ),
           Container(
             color: wine,
-            child: RaisedButton(
+            child: ElevatedButton(
               child: Container(
                 height: 60,
                 child: Center(

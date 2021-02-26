@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 color: secondary,
-                child: RaisedButton(
+                child: ElevatedButton(
                   child: Container(
                     height: 70,
                     child: Center(
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              RaisedButton(
+              ElevatedButton(
                 child: Text(
                   "REGISTER",
                   textAlign: TextAlign.center,
