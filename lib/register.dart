@@ -57,10 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Full name:',
-                    style: TextStyle(
-                        color: black,
-                        fontFamily: 'AkzidenzGrotesk BQ Medium',
-                        fontSize: 12)),
+                    style: TextStyle(color: black, fontSize: 12)),
               ),
               TextField(
                 controller: _usernameController,
@@ -72,10 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Email:',
-                    style: TextStyle(
-                        color: black,
-                        fontFamily: 'AkzidenzGrotesk BQ Medium',
-                        fontSize: 12)),
+                    style: TextStyle(color: black, fontSize: 12)),
               ),
               TextField(
                 controller: _emailController,
@@ -87,16 +81,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text('Password:',
-                    style: TextStyle(
-                        color: black,
-                        fontFamily: 'AkzidenzGrotesk BQ Medium',
-                        fontSize: 12)),
+                    style: TextStyle(color: black, fontSize: 12)),
               ),
               TextField(
                 controller: _passwordController,
                 onChanged: _checkConditions(),
-                style: TextStyle(
-                    color: black, fontFamily: 'AkzidenzGrotesk BQ Medium'),
+                style: TextStyle(color: black),
                 decoration: InputDecoration(
                     filled: false,
                     suffixIcon: IconButton(

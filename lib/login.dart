@@ -68,8 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _passwordController,
                 onChanged: _checkConditions(),
-                style: TextStyle(
-                    color: black, fontFamily: 'AkzidenzGrotesk BQ Medium'),
+                style: TextStyle(color: black),
                 decoration: InputDecoration(
                   filled: false,
                 ),

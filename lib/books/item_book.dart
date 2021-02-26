@@ -34,20 +34,12 @@ class _ItemBookState extends State<ItemBook> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("${widget.book.productTitle}",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 18)),
+                        style: TextStyle(fontSize: 18)),
                     Text(
                       "${widget.book.productDescription.substring(0, 70)}...",
-                      style: TextStyle(
-                          fontFamily: 'AkzidenzGrotesk BQ Medium',
-                          fontSize: 16,
-                          color: darkgrey),
+                      style: TextStyle(fontSize: 16, color: darkgrey),
                     ),
-                    Text("Rating:",
-                        style: TextStyle(
-                            fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 18)),
+                    Text("Rating:", style: TextStyle(fontSize: 18)),
                     Row(
                       children: _ratingToStars(widget.book.productRating),
                     )
