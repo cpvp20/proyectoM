@@ -18,7 +18,7 @@ class _ItemCartState extends State<ItemCart> {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(10),
-      color: yellow,
+      color: third,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(

@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool conditions = false;
-  Color iconColor = lightgrey;
+  Color iconColor = secondary;
 
   bool obscureText = true;
 
@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
         body: Container(
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.only(top: 100),
-      color: lightgrey,
+      color: secondary,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           setState(() {
                             obscureText = !obscureText;
                             if (obscureText) {
-                              iconColor = lightgrey;
+                              iconColor = secondary;
                             } else {
                               iconColor = black;
                             }
@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
               CheckboxListTile(
                 title: Text(
                   'I ACCEPT TERMS AND CONDITIONS',
-                  style: TextStyle(color: lightgrey, fontSize: 10),
+                  style: TextStyle(color: secondary, fontSize: 10),
                 ),
                 value: checked,
                 onChanged: (newValue) {
@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 20,
               ),
               Container(
-                color: lightgrey,
+                color: secondary,
                 child: RaisedButton(
                   child: Container(
                     height: 70,

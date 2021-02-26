@@ -12,7 +12,7 @@ class BeginPage extends StatelessWidget {
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.all(30),
-      color: lightgrey,
+      color: secondary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -23,7 +23,7 @@ class BeginPage extends StatelessWidget {
                 'http://cdn.cnn.com/cnnnext/dam/assets/200505134923-the-good-stuff-special-article-page-logo-large-169.png'),
           ),
           Container(
-            color: lightgrey,
+            color: secondary,
             child: RaisedButton(
               child: Container(
                 height: 60,
@@ -47,7 +47,7 @@ class BeginPage extends StatelessWidget {
             height: 50,
           ),
           Container(
-            color: lightgrey,
+            color: secondary,
             child: RaisedButton(
               child: Container(
                 height: 60,

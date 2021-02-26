@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
               accountName: Text(PROFILE_NAME),
               accountEmail: Text(PROFILE_EMAIL),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: lightgrey,
+                backgroundColor: secondary,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
                     PROFILE_PICTURE,

@@ -54,9 +54,9 @@ class _CartState extends State<Cart> {
                             right: 30,
                             child:
                                 widget.productsList[index].product.status == 1
-                                    ? Icon(Icons.favorite, color: lightgrey)
+                                    ? Icon(Icons.favorite, color: secondary)
                                     : Icon(Icons.favorite_border,
-                                        color: lightgrey)),
+                                        color: secondary)),
                       ]);
                     },
                   ),
@@ -79,7 +79,7 @@ class _CartState extends State<Cart> {
             ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-              color: lightgrey,
+              color: secondary,
               child: GestureDetector(
                 child: Container(
                   height: 40,

@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(top: 100),
-        color: lightgrey,
+        color: secondary,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
               ),
               Container(
-                color: lightgrey,
+                color: secondary,
                 child: RaisedButton(
                   child: Container(
                     height: 70,
