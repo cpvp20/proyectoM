@@ -96,17 +96,21 @@ class _PlayDetailsState extends State<PlayDetails> {
             ),
             Text(
               widget.play.productTitle,
-              style: TextStyle(fontSize: 30),
+              style: Theme.of(context).textTheme.headline5,
             ),
             Text(
               widget.play.productDescription,
-              style: TextStyle(fontSize: 16),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("Rating:", style: TextStyle(fontSize: 18)),
+                Text("Rating:",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2
+                        .copyWith(fontSize: 18.0)),
                 Row(
                   children: _ratingToStars(widget.play.productRating),
                 ),

@@ -109,11 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "Forgot your password? No problem!",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               ),
               SizedBox(
@@ -122,11 +118,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "¿Not yet part of our awesome community?",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: black,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.headline6,
               ),
               ElevatedButton(
                 child: Text(

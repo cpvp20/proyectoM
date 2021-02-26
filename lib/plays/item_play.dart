@@ -39,11 +39,13 @@ class _ItemPlayState extends State<ItemPlay> {
                       "${widget.play.productDescription.substring(0, 70)}...",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    Text("Rating:",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline2
-                            .copyWith(fontSize: 18.0)),
+                    Text(
+                      "Rating:",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2
+                          .copyWith(fontSize: 18.0),
+                    ),
                     Row(
                       children: _ratingToStars(widget.play.productRating),
                     )
