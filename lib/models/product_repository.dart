@@ -77,8 +77,7 @@ class ProductRepository {
           productRating: 57.0,
         ),
         ProductBook(
-          productTitle:
-              "A Life on Our Planet: My Witness Statement and a Vision for the Future",
+          productTitle: "A Life on Our Planet",
           productDescription:
               "It provides a vision for the future in which, through collective action, we can still save Earth’s wild places. But we’ll have to act fast.",
           productImage:
@@ -86,7 +85,7 @@ class ProductRepository {
           productRating: 97.0,
         ),
         ProductBook(
-          productTitle: "Breath: The New Science of a Lost Art",
+          productTitle: "Breath",
           productDescription:
               "There is nothing more essential to our health and well-being than breathing: take air in, let it out, repeat twenty-five thousand times a day. Yet, as a species, humans have lost the ability to breathe correctly, with grave consequences.",
           productImage:
@@ -94,8 +93,7 @@ class ProductRepository {
           productRating: 37.0,
         ),
         ProductBook(
-          productTitle:
-              "How to Argue With a Racist: What Our Genes Do (and Don't) Say About Human Difference",
+          productTitle: "How to Argue With a Racist",
           productDescription:
               "Racist pseudoscience has become so commonplace that it can be hard to spot. But its toxic effects on society are plain to see—feeding white nationalism, fueling hatred, endangering lives, and corroding our discourse on everything from sports to intelligence. Even well-intentioned people repeat stereoty ...more",
           productImage:

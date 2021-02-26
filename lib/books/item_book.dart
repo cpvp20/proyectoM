@@ -26,17 +26,18 @@ class _ItemBookState extends State<ItemBook> {
           child: Row(
             children: [
               Container(
-                width: 140,
+                height: 200,
+                width: 200,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Book",
+                    Text("${widget.book.productTitle}",
                         style: TextStyle(
                             fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 15)),
+                            fontSize: 18)),
                     Text(
-                      "${widget.book.productTitle}",
+                      "${widget.book.productDescription.substring(0, 70)}...",
                       style: TextStyle(
                           fontFamily: 'AkzidenzGrotesk BQ Medium',
                           fontSize: 16,
@@ -55,7 +56,6 @@ class _ItemBookState extends State<ItemBook> {
               Container(
                 padding: const EdgeInsets.only(left: 5.0),
                 width: 200,
-                height: 200,
                 child: Image.network(
                   widget.book.productImage,
                 ),
