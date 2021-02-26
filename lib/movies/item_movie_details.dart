@@ -27,89 +27,77 @@ class _MovieDetailsState extends State<MovieDetails> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Card(
-              color: grey,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              width: 200,
-                              height: 200,
-                              child: Image.network(widget.movie.productImage),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  widget.movie.status == 1
-                                      ? widget.movie.status = 0
-                                      : widget.movie.status = 1;
-                                  widget.cartItems.add(
-                                    ProductItemCart(
-                                        productTitle: widget.movie.productTitle,
-                                        productRating:
-                                            widget.movie.productRating,
-                                        product: widget.movie,
-                                        productImage: widget.movie.productImage,
-                                        typeOfProduct: ProductType.MOVIES),
-                                  );
-                                });
-                              },
-                              child: Container(
-                                  child: widget.movie.status != 1
-                                      ? Icon(
-                                          Icons.library_add_outlined,
-                                          size: 40,
-                                        )
-                                      : Icon(Icons.library_add, size: 40)),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    widget.movie.status == 2
-                                        ? widget.movie.status = 0
-                                        : widget.movie.status = 2;
-                                  });
-                                },
-                                child: Container(
-                                    child: widget.movie.status != 2
-                                        ? Icon(
-                                            Icons.library_add_check_outlined,
-                                            size: 40,
-                                          )
-                                        : Icon(
-                                            Icons.library_add_check,
-                                            size: 40,
-                                          ))),
-                          ],
-                        ),
-                      ],
+                    Container(
+                      width: 300,
+                      height: 300,
+                      child: Image.network(widget.movie.productImage),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-                      child: Text(
-                        widget.movie.productTitle,
-                        style: TextStyle(fontSize: 20),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          widget.movie.status == 1
+                              ? widget.movie.status = 0
+                              : widget.movie.status = 1;
+                          widget.cartItems.add(
+                            ProductItemCart(
+                                productTitle: widget.movie.productTitle,
+                                productRating: widget.movie.productRating,
+                                product: widget.movie,
+                                productImage: widget.movie.productImage,
+                                typeOfProduct: ProductType.MOVIES),
+                          );
+                        });
+                      },
+                      child: Container(
+                          child: widget.movie.status != 1
+                              ? Icon(
+                                  Icons.library_add_outlined,
+                                  size: 30,
+                                )
+                              : Icon(Icons.library_add, size: 30)),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          widget.movie.status == 2
+                              ? widget.movie.status = 0
+                              : widget.movie.status = 2;
+                        });
+                      },
+                      child: Container(
+                        child: widget.movie.status != 2
+                            ? Icon(
+                                Icons.library_add_check_outlined,
+                                size: 30,
+                              )
+                            : Icon(
+                                Icons.library_add_check,
+                                size: 30,
+                              ),
                       ),
                     ),
                   ],
                 ),
-              ),
+              ],
+            ),
+            Text(
+              widget.movie.productTitle,
+              style: TextStyle(fontSize: 30),
             ),
             Text(
               widget.movie.productDescription,
@@ -119,10 +107,10 @@ class _MovieDetailsState extends State<MovieDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("RATING"),
-                Text("${widget.movie.productRating}",
-                    style: TextStyle(
-                        fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 30))
+                Text("Rating:", style: TextStyle(fontSize: 18)),
+                Row(
+                  children: _ratingToStars(widget.movie.productRating),
+                ),
               ],
             ),
             Row(
@@ -133,7 +121,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   children: <Widget>[
                     IconButton(
                       iconSize: 55,
-                      icon: Icon(Icons.find_in_page_outlined),
+                      icon: Icon(Icons.web_outlined),
                       tooltip: 'Find movie online',
                       onPressed: () {
                         setState(() {});
@@ -148,5 +136,17 @@ class _MovieDetailsState extends State<MovieDetails> {
         ),
       ),
     );
+  }
+
+  List<Widget> _ratingToStars(rating) {
+    List<Widget> stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (rating > 0 && rating / 20 > i) {
+        stars.add(Icon(Icons.star));
+      } else {
+        stars.add(Icon(Icons.star_border));
+      }
+    }
+    return stars;
   }
 }

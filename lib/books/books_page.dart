@@ -18,6 +18,7 @@ class BooksPage extends StatefulWidget {
 class _BooksPageState extends State<BooksPage> {
   @override
   Widget build(BuildContext context) {
+    ProductBook _bookItem;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,24 +33,44 @@ class _BooksPageState extends State<BooksPage> {
         ],
         title: Text("Books"),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 50),
-        itemCount: widget.booksList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return BookDetails(
-                  book: widget.booksList[index],
-                  cartItems: widget.cartItems,
-                );
-              })).then((value) => setState(() {}));
-            },
-            child: ItemBook(
-              book: widget.booksList[index],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                labelText: "Search by name or author",
+                suffixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onSubmitted: (content) {},
             ),
-          );
-        },
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.booksList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  _bookItem = widget.booksList[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return BookDetails(
+                          book: widget.booksList[index],
+                          cartItems: widget.cartItems,
+                        );
+                      })).then((value) => setState(() {}));
+                    },
+                    child: ItemBook(
+                      book: _bookItem,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

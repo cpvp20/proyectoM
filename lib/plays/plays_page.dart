@@ -1,10 +1,9 @@
 import 'package:proyectoM/cart/cart.dart';
+import 'package:proyectoM/plays/item_play_details.dart';
 import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:proyectoM/plays/item_play.dart';
 import 'package:proyectoM/models/product_play.dart';
-
-import 'item_play_details.dart';
 
 class PlaysPage extends StatefulWidget {
   final List<ProductPlay> playsList;
@@ -19,6 +18,7 @@ class PlaysPage extends StatefulWidget {
 class _PlaysPageState extends State<PlaysPage> {
   @override
   Widget build(BuildContext context) {
+    ProductPlay _playItem;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -33,22 +33,44 @@ class _PlaysPageState extends State<PlaysPage> {
         ],
         title: Text("Plays"),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 50),
-        itemCount: widget.playsList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return PlayDetails(
-                    play: widget.playsList[index], cartItems: widget.cartItems);
-              })).then((value) => setState(() {}));
-            },
-            child: ItemPlay(
-              play: widget.playsList[index],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                labelText: "Search by name",
+                suffixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onSubmitted: (content) {},
             ),
-          );
-        },
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.playsList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  _playItem = widget.playsList[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return PlayDetails(
+                          play: widget.playsList[index],
+                          cartItems: widget.cartItems,
+                        );
+                      })).then((value) => setState(() {}));
+                    },
+                    child: ItemPlay(
+                      play: _playItem,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

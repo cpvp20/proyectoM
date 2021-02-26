@@ -27,89 +27,77 @@ class _BookDetailsState extends State<BookDetails> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Card(
-              color: grey,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              width: 200,
-                              height: 200,
-                              child: Image.network(widget.book.productImage),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  widget.book.status == 1
-                                      ? widget.book.status = 0
-                                      : widget.book.status = 1;
-                                  widget.cartItems.add(
-                                    ProductItemCart(
-                                        productTitle: widget.book.productTitle,
-                                        productRating:
-                                            widget.book.productRating,
-                                        product: widget.book,
-                                        productImage: widget.book.productImage,
-                                        typeOfProduct: ProductType.BOOKS),
-                                  );
-                                });
-                              },
-                              child: Container(
-                                  child: widget.book.status != 1
-                                      ? Icon(
-                                          Icons.library_add_outlined,
-                                          size: 40,
-                                        )
-                                      : Icon(Icons.library_add, size: 40)),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    widget.book.status == 2
-                                        ? widget.book.status = 0
-                                        : widget.book.status = 2;
-                                  });
-                                },
-                                child: Container(
-                                    child: widget.book.status != 2
-                                        ? Icon(
-                                            Icons.library_add_check_outlined,
-                                            size: 40,
-                                          )
-                                        : Icon(
-                                            Icons.library_add_check,
-                                            size: 40,
-                                          ))),
-                          ],
-                        ),
-                      ],
+                    Container(
+                      width: 300,
+                      height: 300,
+                      child: Image.network(widget.book.productImage),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-                      child: Text(
-                        widget.book.productTitle,
-                        style: TextStyle(fontSize: 20),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          widget.book.status == 1
+                              ? widget.book.status = 0
+                              : widget.book.status = 1;
+                          widget.cartItems.add(
+                            ProductItemCart(
+                                productTitle: widget.book.productTitle,
+                                productRating: widget.book.productRating,
+                                product: widget.book,
+                                productImage: widget.book.productImage,
+                                typeOfProduct: ProductType.BOOKS),
+                          );
+                        });
+                      },
+                      child: Container(
+                          child: widget.book.status != 1
+                              ? Icon(
+                                  Icons.library_add_outlined,
+                                  size: 40,
+                                )
+                              : Icon(Icons.library_add, size: 40)),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          widget.book.status == 2
+                              ? widget.book.status = 0
+                              : widget.book.status = 2;
+                        });
+                      },
+                      child: Container(
+                        child: widget.book.status != 2
+                            ? Icon(
+                                Icons.library_add_check_outlined,
+                                size: 40,
+                              )
+                            : Icon(
+                                Icons.library_add_check,
+                                size: 40,
+                              ),
                       ),
                     ),
                   ],
                 ),
-              ),
+              ],
+            ),
+            Text(
+              widget.book.productTitle,
+              style: TextStyle(fontSize: 30),
             ),
             Text(
               widget.book.productDescription,
@@ -119,10 +107,10 @@ class _BookDetailsState extends State<BookDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("RATING"),
-                Text("${widget.book.productRating}",
-                    style: TextStyle(
-                        fontFamily: 'AkzidenzGrotesk BQ Medium', fontSize: 30))
+                Text("Rating:", style: TextStyle(fontSize: 18)),
+                Row(
+                  children: _ratingToStars(widget.book.productRating),
+                ),
               ],
             ),
             Row(
@@ -133,7 +121,7 @@ class _BookDetailsState extends State<BookDetails> {
                   children: <Widget>[
                     IconButton(
                       iconSize: 55,
-                      icon: Icon(Icons.find_in_page_outlined),
+                      icon: Icon(Icons.location_on_outlined),
                       tooltip: 'Find book near me',
                       onPressed: () {
                         setState(() {});
@@ -148,5 +136,17 @@ class _BookDetailsState extends State<BookDetails> {
         ),
       ),
     );
+  }
+
+  List<Widget> _ratingToStars(rating) {
+    List<Widget> stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (rating > 0 && rating / 20 > i) {
+        stars.add(Icon(Icons.star));
+      } else {
+        stars.add(Icon(Icons.star_border));
+      }
+    }
+    return stars;
   }
 }
