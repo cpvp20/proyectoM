@@ -58,7 +58,7 @@ class ProductRepository {
               " Imagine a library in which each book represents a different path your life could have taken. Now imagine spending eternity in that library. It’s a Goodreads kind of dream…",
           productImage:
               "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602190253l/52578297.jpg",
-          productRating: 97.0,
+          productRating: 100.0,
         ),
         ProductBook(
           productTitle: "The Guest List",
@@ -66,7 +66,7 @@ class ProductRepository {
               "Jules and Will have chosen to hold their wedding on a remote island off the coast of Ireland. Then the storm hits. Then the body is found. It’s like the old Irish adage: It’s not a party until somebody ends up dead.",
           productImage:
               "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597345150l/54911607._SY475_.jpg",
-          productRating: 97.0,
+          productRating: 70.0,
         ),
         ProductBook(
           productTitle: "The Vanishing Half",
@@ -74,7 +74,7 @@ class ProductRepository {
               "Bennett’s book traces fascinating threads of American identity and is our hands-down winner for the 2020 Historical Fiction award.",
           productImage:
               "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1577090827l/51791252._SX318_SY475_.jpg",
-          productRating: 97.0,
+          productRating: 57.0,
         ),
         ProductBook(
           productTitle:
@@ -91,7 +91,7 @@ class ProductRepository {
               "There is nothing more essential to our health and well-being than breathing: take air in, let it out, repeat twenty-five thousand times a day. Yet, as a species, humans have lost the ability to breathe correctly, with grave consequences.",
           productImage:
               "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1575339793l/48890486.jpg",
-          productRating: 97.0,
+          productRating: 37.0,
         ),
         ProductBook(
           productTitle:
@@ -100,7 +100,7 @@ class ProductRepository {
               "Racist pseudoscience has become so commonplace that it can be hard to spot. But its toxic effects on society are plain to see—feeding white nationalism, fueling hatred, endangering lives, and corroding our discourse on everything from sports to intelligence. Even well-intentioned people repeat stereoty ...more",
           productImage:
               "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1576438164l/50734400._SY475_.jpg",
-          productRating: 97.0,
+          productRating: 0.0,
         ),
       ];
     // ----------------------              ----------------------------//

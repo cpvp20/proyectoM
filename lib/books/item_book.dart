@@ -26,7 +26,7 @@ class _ItemBookState extends State<ItemBook> {
           child: Row(
             children: [
               Container(
-                width: 120,
+                width: 140,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -42,10 +42,13 @@ class _ItemBookState extends State<ItemBook> {
                           fontSize: 16,
                           color: darkgrey),
                     ),
-                    Text("\$${widget.book.productRating}",
+                    Text("Rating:",
                         style: TextStyle(
                             fontFamily: 'AkzidenzGrotesk BQ Medium',
-                            fontSize: 24))
+                            fontSize: 18)),
+                    Row(
+                      children: _ratingToStars(widget.book.productRating),
+                    )
                   ],
                 ),
               ),
@@ -70,5 +73,17 @@ class _ItemBookState extends State<ItemBook> {
         )
       ]),
     );
+  }
+
+  List<Widget> _ratingToStars(rating) {
+    List<Widget> stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (rating > 0 && rating / 20 > i) {
+        stars.add(Icon(Icons.star));
+      } else {
+        stars.add(Icon(Icons.star_border));
+      }
+    }
+    return stars;
   }
 }
