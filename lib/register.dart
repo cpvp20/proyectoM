@@ -56,8 +56,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Full name:',
-                    style: TextStyle(color: black, fontSize: 12)),
+                child: Text(
+                  'Full name:',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
               TextField(
                 controller: _usernameController,
@@ -68,8 +70,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Email:',
-                    style: TextStyle(color: black, fontSize: 12)),
+                child: Text(
+                  'Email:',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
               TextField(
                 controller: _emailController,
@@ -80,13 +84,15 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Password:',
-                    style: TextStyle(color: black, fontSize: 12)),
+                child: Text(
+                  'Password:',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
               TextField(
                 controller: _passwordController,
                 onChanged: _checkConditions(),
-                style: TextStyle(color: black),
+                style: Theme.of(context).textTheme.headline6,
                 decoration: InputDecoration(
                     filled: false,
                     suffixIcon: IconButton(
@@ -104,9 +110,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: obscureText,
               ),
               CheckboxListTile(
+                activeColor: black,
                 title: Text(
                   'I ACCEPT TERMS AND CONDITIONS',
-                  style: TextStyle(color: secondary, fontSize: 10),
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 value: checked,
                 onChanged: (newValue) {
@@ -127,10 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Center(
                       child: Text(
                         "REGISTER",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: black,
-                            fontWeight: FontWeight.w700),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
                   ),
@@ -153,18 +157,19 @@ class _RegisterPageState extends State<RegisterPage> {
               Text(
                 "¿Already have an account?",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: black, fontSize: 12, fontWeight: FontWeight.w700),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
               ElevatedButton(
                 child: Text(
                   "LOGIN",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: black,
-                      fontSize: 12,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w700),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(decoration: TextDecoration.underline),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
