@@ -20,6 +20,7 @@ class _ItemBookState extends State<ItemBook> {
       padding: const EdgeInsets.all(10.0),
       child: Stack(alignment: Alignment.center, children: [
         Container(
+          color: secondary,
           padding: const EdgeInsets.all(30.0),
           width: 500,
           height: 260,
@@ -66,11 +67,44 @@ class _ItemBookState extends State<ItemBook> {
         Positioned(
           top: 10,
           right: 12,
-          child: Container(
-              child: widget.book.status == 1
-                  ? Icon(Icons.favorite)
-                  : Icon(Icons.favorite_border)),
-        )
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.book.status == 1
+                    ? widget.book.status = 0
+                    : widget.book.status = 1;
+              });
+            },
+            child: Container(
+                child: widget.book.status != 1
+                    ? Icon(
+                        Icons.library_add_outlined,
+                      )
+                    : Icon(Icons.library_add)),
+          ),
+        ),
+        Positioned(
+          top: 50,
+          right: 12,
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.book.status == 2
+                    ? widget.book.status = 0
+                    : widget.book.status = 2;
+              });
+            },
+            child: Container(
+              child: widget.book.status != 2
+                  ? Icon(
+                      Icons.library_add_check_outlined,
+                    )
+                  : Icon(
+                      Icons.library_add_check,
+                    ),
+            ),
+          ),
+        ),
       ]),
     );
   }

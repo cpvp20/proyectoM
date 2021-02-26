@@ -78,23 +78,25 @@ class _PlayDetailsState extends State<PlayDetails> {
                               height: 20,
                             ),
                             GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    widget.play.status == 2
-                                        ? widget.play.status = 0
-                                        : widget.play.status = 2;
-                                  });
-                                },
-                                child: Container(
-                                    child: widget.play.status != 2
-                                        ? Icon(
-                                            Icons.library_add_check_outlined,
-                                            size: 40,
-                                          )
-                                        : Icon(
-                                            Icons.library_add_check,
-                                            size: 40,
-                                          ))),
+                              onTap: () {
+                                setState(() {
+                                  widget.play.status == 2
+                                      ? widget.play.status = 0
+                                      : widget.play.status = 2;
+                                });
+                              },
+                              child: Container(
+                                child: widget.play.status != 2
+                                    ? Icon(
+                                        Icons.library_add_check_outlined,
+                                        size: 40,
+                                      )
+                                    : Icon(
+                                        Icons.library_add_check,
+                                        size: 40,
+                                      ),
+                              ),
+                            ),
                           ],
                         ),
                       ],
