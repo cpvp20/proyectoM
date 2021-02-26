@@ -30,10 +30,7 @@ class BeginPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "REGISTER",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w800),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               ),
@@ -54,10 +51,7 @@ class BeginPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "LOGIN",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w800),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               ),
@@ -78,10 +72,7 @@ class BeginPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "SKIP (solo mientras para no tener q estar logueandonos cada vez)",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w800),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               ),
