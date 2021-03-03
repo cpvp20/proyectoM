@@ -1,12 +1,10 @@
-import 'package:proyectoM/models/product_movie.dart';
-import 'package:proyectoM/models/product_item_cart.dart';
-import 'package:proyectoM/models/product_repository.dart';
+import 'package:proyectoM/models/movie.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetails extends StatefulWidget {
-  final ProductMovie movie;
-  final List<ProductItemCart> cartItems;
-  MovieDetails({Key key, @required this.movie, @required this.cartItems})
+  final Movie movie;
+  final List<Movie> moviesToWatch;
+  MovieDetails({Key key, @required this.movie, @required this.moviesToWatch})
       : super(key: key);
 
   @override
@@ -19,7 +17,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.movie.productTitle),
+        title: Text(widget.movie.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
@@ -34,9 +32,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      width: 300,
-                      height: 300,
-                      child: Image.network(widget.movie.productImage),
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(widget.movie.image),
                     ),
                   ],
                 ),
@@ -49,14 +46,6 @@ class _MovieDetailsState extends State<MovieDetails> {
                           widget.movie.status == 1
                               ? widget.movie.status = 0
                               : widget.movie.status = 1;
-                          widget.cartItems.add(
-                            ProductItemCart(
-                                productTitle: widget.movie.productTitle,
-                                productRating: widget.movie.productRating,
-                                product: widget.movie,
-                                productImage: widget.movie.productImage,
-                                typeOfProduct: ProductType.MOVIES),
-                          );
                         });
                       },
                       child: Container(
@@ -95,11 +84,11 @@ class _MovieDetailsState extends State<MovieDetails> {
               ],
             ),
             Text(
-              widget.movie.productTitle,
+              widget.movie.title,
               style: Theme.of(context).textTheme.headline5,
             ),
             Text(
-              widget.movie.productDescription,
+              widget.movie.description,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(

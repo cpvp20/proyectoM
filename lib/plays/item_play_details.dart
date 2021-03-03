@@ -1,12 +1,10 @@
-import 'package:proyectoM/models/product_play.dart';
-import 'package:proyectoM/models/product_item_cart.dart';
-import 'package:proyectoM/models/product_repository.dart';
+import 'package:proyectoM/models/play.dart';
 import 'package:flutter/material.dart';
 
 class PlayDetails extends StatefulWidget {
-  final ProductPlay play;
-  final List<ProductItemCart> cartItems;
-  PlayDetails({Key key, @required this.play, @required this.cartItems})
+  final Play play;
+  final List<Play> playsToSee;
+  PlayDetails({Key key, @required this.play, @required this.playsToSee})
       : super(key: key);
 
   @override
@@ -19,7 +17,7 @@ class _PlayDetailsState extends State<PlayDetails> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.play.productTitle),
+        title: Text(widget.play.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
@@ -34,9 +32,8 @@ class _PlayDetailsState extends State<PlayDetails> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      width: 300,
-                      height: 300,
-                      child: Image.network(widget.play.productImage),
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(widget.play.image),
                     ),
                   ],
                 ),
@@ -49,13 +46,8 @@ class _PlayDetailsState extends State<PlayDetails> {
                           widget.play.status == 1
                               ? widget.play.status = 0
                               : widget.play.status = 1;
-                          widget.cartItems.add(
-                            ProductItemCart(
-                                productTitle: widget.play.productTitle,
-                                productRating: widget.play.productRating,
-                                product: widget.play,
-                                productImage: widget.play.productImage,
-                                typeOfProduct: ProductType.PLAYS),
+                          widget.playsToSee.add(
+                            widget.play,
                           );
                         });
                       },
@@ -95,11 +87,11 @@ class _PlayDetailsState extends State<PlayDetails> {
               ],
             ),
             Text(
-              widget.play.productTitle,
+              widget.play.title,
               style: Theme.of(context).textTheme.headline5,
             ),
             Text(
-              widget.play.productDescription,
+              widget.play.description,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(

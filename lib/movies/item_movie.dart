@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:proyectoM/models/product_movie.dart';
+import 'package:proyectoM/models/movie.dart';
 import 'package:proyectoM/colors.dart';
 
 class ItemMovie extends StatefulWidget {
-  final ProductMovie movie;
+  final Movie movie;
   ItemMovie({
     Key key,
     @required this.movie,
@@ -22,21 +22,21 @@ class _ItemMovieState extends State<ItemMovie> {
         Container(
           color: secondary,
           padding: const EdgeInsets.all(30.0),
-          width: 500,
-          height: 260,
+          height: MediaQuery.of(context).size.height * 0.3,
+          width: MediaQuery.of(context).size.width * 0.8,
           child: Row(
             children: [
               Container(
-                height: 200,
-                width: 200,
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("${widget.movie.productTitle}",
+                    Text("${widget.movie.title}",
                         style: Theme.of(context).textTheme.headline2),
                     Text(
-                      "${widget.movie.productDescription.substring(0, 70)}...",
+                      "${widget.movie.description.substring(0, 70)}...",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
@@ -54,53 +54,12 @@ class _ItemMovieState extends State<ItemMovie> {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5.0),
-                width: 200,
+                width: MediaQuery.of(context).size.width * 0.3,
                 child: Image.network(
-                  widget.movie.productImage,
+                  widget.movie.image,
                 ),
               ),
             ],
-          ),
-        ),
-        Positioned(
-          top: 10,
-          right: 12,
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.movie.status == 1
-                    ? widget.movie.status = 0
-                    : widget.movie.status = 1;
-              });
-            },
-            child: Container(
-                child: widget.movie.status != 1
-                    ? Icon(
-                        Icons.library_add_outlined,
-                      )
-                    : Icon(Icons.library_add)),
-          ),
-        ),
-        Positioned(
-          top: 50,
-          right: 12,
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.movie.status == 2
-                    ? widget.movie.status = 0
-                    : widget.movie.status = 2;
-              });
-            },
-            child: Container(
-              child: widget.movie.status != 2
-                  ? Icon(
-                      Icons.library_add_check_outlined,
-                    )
-                  : Icon(
-                      Icons.library_add_check,
-                    ),
-            ),
           ),
         ),
       ]),

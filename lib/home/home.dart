@@ -1,9 +1,12 @@
-import 'package:proyectoM/cart/cart.dart';
 import 'package:proyectoM/books/books_page.dart';
+import 'package:proyectoM/books/books_read_page.dart';
+import 'package:proyectoM/books/books_to_read_page.dart';
+import 'package:proyectoM/models/book.dart';
+import 'package:proyectoM/models/movie.dart';
+import 'package:proyectoM/models/play.dart';
 import 'package:proyectoM/movies/movies_page.dart';
 import 'package:proyectoM/plays/plays_page.dart';
 import 'package:proyectoM/login.dart';
-import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:proyectoM/models/product_repository.dart';
 import 'package:proyectoM/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +24,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   var moviesList = ProductRepository.loadProducts(ProductType.MOVIES);
-  var booksList = ProductRepository.loadProducts(ProductType.BOOKS);
+  //var booksList = ProductRepository.loadProducts(ProductType.BOOKS);
   var playsList = ProductRepository.loadProducts(ProductType.PLAYS);
-  List<ProductItemCart> cartItems = [];
+  List<Book> booksToRead = [];
+  List<Book> booksRead = [];
+
+  List<Movie> moviesToWatch = [];
+  List<Movie> moviesWatched = [];
+
+  List<Play> playsToSee = [];
+  List<Play> playsSeen = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,25 +58,6 @@ class _HomeState extends State<Home> {
               height: 12,
             ),
             ListTile(
-              title: Text(PROFILE_CART),
-              leading: Icon(Icons.shopping_cart),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cart(productsList: cartItems),
-                ));
-              },
-            ),
-            ListTile(
-              title: Text(PROFILE_WISHES),
-              leading: Icon(Icons.favorite_border),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text(PROFILE_HISTORY),
-              leading: Icon(Icons.store),
-              onTap: () {},
-            ),
-            ListTile(
               title: Text(PROFILE_SETTINGS),
               leading: Icon(Icons.settings),
               onTap: () {},
@@ -84,17 +76,7 @@ class _HomeState extends State<Home> {
       ),
       appBar: AppBar(
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => Cart(productsList: cartItems),
-              ));
-            },
-          )
-        ],
-        title: Text("Good Stuff"),
+        title: Text(APP_TITLE),
       ),
       key: _scaffoldKey,
       body: Padding(
@@ -129,7 +111,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: _openBooksPage,
+                      onPressed: _openBooksToReadPage,
                       child: Text(
                         "My list of Books To Read",
                         style: Theme.of(context)
@@ -139,7 +121,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: _openBooksPage,
+                      onPressed: _openBooksReadPage,
                       child: Text(
                         "Books Read by Me",
                         style: Theme.of(context)
@@ -258,38 +240,57 @@ class _HomeState extends State<Home> {
     );
   }
 
+//movie methods
   void _openMoviesPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) {
-          return MoviesPage(
-            moviesList: moviesList,
-            cartItems: cartItems,
-          );
-        },
+        builder: (context) => MoviesPage(
+          moviesList: moviesList,
+          moviesToWatch: moviesToWatch,
+        ),
       ),
     );
   }
 
+//book methods
   void _openBooksPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) {
-        return BooksPage(
-          booksList: booksList,
-          cartItems: cartItems,
-        );
-      }),
+      MaterialPageRoute(
+        builder: (context) => BooksPage(
+          booksToRead: booksToRead,
+          booksRead: booksRead,
+        ),
+      ),
     );
   }
 
+  void _openBooksToReadPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => BooksToRead(
+        booksToRead: booksToRead,
+        booksRead: booksRead,
+      ),
+    ));
+  }
+
+  void _openBooksReadPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => BooksRead(
+        booksToRead: booksToRead,
+        booksRead: booksRead,
+      ),
+    ));
+  }
+
+//play methods
   void _openPlaysPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) {
-        return PlaysPage(
+      MaterialPageRoute(
+        builder: (context) => PlaysPage(
           playsList: playsList,
-          cartItems: cartItems,
-        );
-      }),
+          playsToSee: playsToSee,
+        ),
+      ),
     );
   }
 }

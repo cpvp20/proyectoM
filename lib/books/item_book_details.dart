@@ -1,12 +1,17 @@
-import 'package:proyectoM/models/product_book.dart';
-import 'package:proyectoM/models/product_item_cart.dart';
-import 'package:proyectoM/models/product_repository.dart';
+import 'package:proyectoM/colors.dart';
+import 'package:proyectoM/models/book.dart';
 import 'package:flutter/material.dart';
 
 class BookDetails extends StatefulWidget {
-  final ProductBook book;
-  final List<ProductItemCart> cartItems;
-  BookDetails({Key key, @required this.book, @required this.cartItems})
+  final Book book;
+  final List<Book> booksToRead;
+  final List<Book> booksRead;
+
+  BookDetails(
+      {Key key,
+      @required this.book,
+      @required this.booksToRead,
+      @required this.booksRead})
       : super(key: key);
 
   @override
@@ -19,7 +24,7 @@ class _BookDetailsState extends State<BookDetails> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.book.productTitle),
+        title: Text(widget.book.volumeInfo.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
@@ -34,9 +39,12 @@ class _BookDetailsState extends State<BookDetails> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      width: 300,
-                      height: 300,
-                      child: Image.network(widget.book.productImage),
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.network(
+                        widget.book.volumeInfo.imageLinks.thumbnail ??
+                            "https://via.placeholder.com/150",
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ],
                 ),
@@ -46,25 +54,22 @@ class _BookDetailsState extends State<BookDetails> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          widget.book.status == 1
-                              ? widget.book.status = 0
-                              : widget.book.status = 1;
-                          widget.cartItems.add(
-                            ProductItemCart(
-                                productTitle: widget.book.productTitle,
-                                productRating: widget.book.productRating,
-                                product: widget.book,
-                                productImage: widget.book.productImage,
-                                typeOfProduct: ProductType.BOOKS),
-                          );
+                          int index = getIndexOfItemInList(
+                              widget.booksToRead, widget.book.id);
+                          if (index == -1) {
+                            //item not in todo list
+                            widget.booksToRead.add(widget.book);
+                          } else {
+                            //item already in todo list
+                            widget.booksToRead.removeAt(index);
+                          }
                         });
                       },
                       child: Container(
-                          child: widget.book.status != 1
-                              ? Icon(
-                                  Icons.library_add_outlined,
-                                  size: 40,
-                                )
+                          child: getIndexOfItemInList(
+                                      widget.booksToRead, widget.book.id) ==
+                                  -1
+                              ? Icon(Icons.library_add_outlined, size: 40)
                               : Icon(Icons.library_add, size: 40)),
                     ),
                     SizedBox(
@@ -73,33 +78,55 @@ class _BookDetailsState extends State<BookDetails> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          widget.book.status == 2
-                              ? widget.book.status = 0
-                              : widget.book.status = 2;
+                          int index = getIndexOfItemInList(
+                              widget.booksRead, widget.book.id);
+                          if (index == -1) {
+                            //item not in todo list
+                            widget.booksRead.add(widget.book);
+                          } else {
+                            //item already in todo list
+                            widget.booksRead.removeAt(index);
+                          }
                         });
                       },
                       child: Container(
-                        child: widget.book.status != 2
-                            ? Icon(
-                                Icons.library_add_check_outlined,
-                                size: 40,
-                              )
-                            : Icon(
-                                Icons.library_add_check,
-                                size: 40,
-                              ),
-                      ),
+                          child: getIndexOfItemInList(
+                                      widget.booksRead, widget.book.id) ==
+                                  -1
+                              ? Icon(Icons.library_add_check_outlined, size: 40)
+                              : Icon(Icons.library_add_check, size: 40)),
                     ),
                   ],
                 ),
               ],
             ),
             Text(
-              widget.book.productTitle,
+              widget.book.volumeInfo.title,
               style: Theme.of(context).textTheme.headline5,
             ),
             Text(
-              widget.book.productDescription,
+              widget.book.volumeInfo.authors.toString(),
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            Text(
+              widget.book.volumeInfo.publishedDate ?? "No date",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            Row(
+              children: List.generate(
+                widget.book.volumeInfo.categories != null
+                    ? widget.book.volumeInfo.categories.length
+                    : 0,
+                (index) => Chip(
+                  backgroundColor: primary,
+                  label: Text(
+                    "${widget.book.volumeInfo.categories[index]}",
+                  ),
+                ),
+              ),
+            ),
+            Text(
+              widget.book.volumeInfo.description ?? "No description",
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(
@@ -112,7 +139,7 @@ class _BookDetailsState extends State<BookDetails> {
                         .headline2
                         .copyWith(fontSize: 18.0)),
                 Row(
-                  children: _ratingToStars(widget.book.productRating),
+                  children: _ratingToStars(80),
                 ),
               ],
             ),
@@ -151,5 +178,16 @@ class _BookDetailsState extends State<BookDetails> {
       }
     }
     return stars;
+  }
+
+//this method has 2 purposes, to see if item is present in cart, and if so to find its index
+//returns -1 if item is not present in cart
+  int getIndexOfItemInList(list, String id) {
+    for (Book e in list) {
+      int index = 0;
+      if (e.id == id) return index;
+      index++;
+    }
+    return -1;
   }
 }

@@ -1,14 +1,12 @@
-import 'package:proyectoM/cart/cart.dart';
 import 'package:proyectoM/plays/item_play_details.dart';
-import 'package:proyectoM/models/product_item_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:proyectoM/plays/item_play.dart';
-import 'package:proyectoM/models/product_play.dart';
+import 'package:proyectoM/models/play.dart';
 
 class PlaysPage extends StatefulWidget {
-  final List<ProductPlay> playsList;
-  final List<ProductItemCart> cartItems;
-  PlaysPage({Key key, @required this.playsList, @required this.cartItems})
+  final List<Play> playsList;
+  final List<Play> playsToSee;
+  PlaysPage({Key key, @required this.playsList, @required this.playsToSee})
       : super(key: key);
 
   @override
@@ -18,19 +16,10 @@ class PlaysPage extends StatefulWidget {
 class _PlaysPageState extends State<PlaysPage> {
   @override
   Widget build(BuildContext context) {
-    ProductPlay _playItem;
+    Play _playItem;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cart(productsList: widget.cartItems)));
-            },
-          )
-        ],
         title: Text("Plays"),
       ),
       body: Padding(
@@ -58,7 +47,7 @@ class _PlaysPageState extends State<PlaysPage> {
                           .push(MaterialPageRoute(builder: (context) {
                         return PlayDetails(
                           play: widget.playsList[index],
-                          cartItems: widget.cartItems,
+                          playsToSee: widget.playsToSee,
                         );
                       })).then((value) => setState(() {}));
                     },
