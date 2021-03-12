@@ -18,13 +18,11 @@ class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _BookState createState() => _BookState();
 }
 
-class _HomeState extends State<Home> {
+class _BookState extends State<Home> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-  var moviesList = ProductRepository.loadProducts(ProductType.MOVIES);
-  //var booksList = ProductRepository.loadProducts(ProductType.BOOKS);
   var playsList = ProductRepository.loadProducts(ProductType.PLAYS);
   List<Book> booksToRead = [];
   List<Book> booksRead = [];
@@ -245,8 +243,8 @@ class _HomeState extends State<Home> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => MoviesPage(
-          moviesList: moviesList,
           moviesToWatch: moviesToWatch,
+          moviesWatched: moviesWatched,
         ),
       ),
     );

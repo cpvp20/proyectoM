@@ -24,7 +24,7 @@ class _BookDetailsState extends State<BookDetails> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.book.volumeInfo.title),
+        title: Text(widget.book.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
@@ -41,8 +41,7 @@ class _BookDetailsState extends State<BookDetails> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.2,
                       child: Image.network(
-                        widget.book.volumeInfo.imageLinks.thumbnail ??
-                            "https://via.placeholder.com/150",
+                        widget.book.image ?? "https://via.placeholder.com/150",
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -101,32 +100,32 @@ class _BookDetailsState extends State<BookDetails> {
               ],
             ),
             Text(
-              widget.book.volumeInfo.title,
+              widget.book.title,
               style: Theme.of(context).textTheme.headline5,
             ),
             Text(
-              widget.book.volumeInfo.authors.toString(),
+              widget.book.authors.toString(),
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Text(
-              widget.book.volumeInfo.publishedDate ?? "No date",
+              widget.book.publishedDate ?? "No date",
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(
               children: List.generate(
-                widget.book.volumeInfo.categories != null
-                    ? widget.book.volumeInfo.categories.length
+                widget.book.categories != null
+                    ? widget.book.categories.length
                     : 0,
                 (index) => Chip(
                   backgroundColor: primary,
                   label: Text(
-                    "${widget.book.volumeInfo.categories[index]}",
+                    "${widget.book.categories[index]}",
                   ),
                 ),
               ),
             ),
             Text(
-              widget.book.volumeInfo.description ?? "No description",
+              widget.book.description ?? "No description",
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Row(
@@ -139,7 +138,7 @@ class _BookDetailsState extends State<BookDetails> {
                         .headline2
                         .copyWith(fontSize: 18.0)),
                 Row(
-                  children: _ratingToStars(80),
+                  children: _ratingToStars(widget.book.rating),
                 ),
               ],
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
-import 'package:proyectoM/bloc/home_bloc.dart';
+import 'package:proyectoM/bloc/book_bloc.dart';
 import 'package:proyectoM/books/item_book.dart';
 import 'package:proyectoM/books/item_book_details.dart';
 import 'package:proyectoM/models/book.dart';
@@ -18,11 +18,11 @@ class BooksPage extends StatefulWidget {
 }
 
 class _BooksPageState extends State<BooksPage> {
-  HomeBloc _homeBloc;
+  BookBloc _BookBloc;
 
   @override
   void dispose() {
-    _homeBloc.close();
+    _BookBloc.close();
     super.dispose();
   }
 
@@ -30,8 +30,8 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        _homeBloc = HomeBloc();
-        return _homeBloc;
+        _BookBloc = BookBloc();
+        return _BookBloc;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -51,13 +51,13 @@ class _BooksPageState extends State<BooksPage> {
                   ),
                 ),
                 onSubmitted: (content) {
-                  _homeBloc.add(SearchBookEvent(queryText: content));
+                  _BookBloc.add(SearchBookEvent(queryText: content));
                 },
               ),
               Expanded(
-                child: BlocConsumer<HomeBloc, HomeState>(
+                child: BlocConsumer<BookBloc, BookState>(
                   listener: (context, state) {
-                    if (state is HomeErrorState) {
+                    if (state is BookErrorState) {
                       Scaffold.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(
@@ -68,7 +68,7 @@ class _BooksPageState extends State<BooksPage> {
                     }
                   },
                   builder: (context, state) {
-                    if (state is HomeLoadedState) {
+                    if (state is BookLoadedState) {
                       return ListView.builder(
                           itemCount: state.booksList.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -86,7 +86,7 @@ class _BooksPageState extends State<BooksPage> {
                               child: ItemBook(book: state.booksList[index]),
                             );
                           });
-                    } else if (state is HomeLoadingState) {
+                    } else if (state is BookLoadingState) {
                       return ListView.builder(
                         itemCount: 7,
                         itemBuilder: (BuildContext context, int index) {

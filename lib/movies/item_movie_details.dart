@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 class MovieDetails extends StatefulWidget {
   final Movie movie;
   final List<Movie> moviesToWatch;
-  MovieDetails({Key key, @required this.movie, @required this.moviesToWatch})
+  final List<Movie> moviesWatched;
+
+  MovieDetails(
+      {Key key,
+      @required this.movie,
+      @required this.moviesToWatch,
+      @required this.moviesWatched})
       : super(key: key);
 
   @override
@@ -41,15 +47,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          widget.movie.status == 1
-                              ? widget.movie.status = 0
-                              : widget.movie.status = 1;
-                        });
-                      },
+                      onTap: () {},
                       child: Container(
-                          child: widget.movie.status != 1
+                          child: true
                               ? Icon(
                                   Icons.library_add_outlined,
                                   size: 30,
@@ -60,15 +60,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                       height: 20,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          widget.movie.status == 2
-                              ? widget.movie.status = 0
-                              : widget.movie.status = 2;
-                        });
-                      },
+                      onTap: () {},
                       child: Container(
-                        child: widget.movie.status != 2
+                        child: true
                             ? Icon(
                                 Icons.library_add_check_outlined,
                                 size: 30,
@@ -103,7 +97,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       .copyWith(fontSize: 18.0),
                 ),
                 Row(
-                  children: _ratingToStars(widget.movie.productRating),
+                  children: _ratingToStars(widget.movie.rating),
                 ),
               ],
             ),

@@ -1,66 +1,72 @@
 import 'package:equatable/equatable.dart';
 
-import "sale_info.dart";
-import "volume_info.dart";
-
 class Book extends Equatable {
   final String id;
   final String etag;
   final String selfLink;
-  final VolumeInfo volumeInfo;
-  final SaleInfo saleInfo;
+  final String title;
+  final String publishedDate;
+  final String image;
+  final String language;
+  final String previewLink;
+  final List<String> authors;
+  final List<String> categories;
+  final String description;
+  final int pageCount;
+  final int rating;
 
   const Book({
     this.id,
     this.etag,
     this.selfLink,
-    this.volumeInfo,
-    this.saleInfo,
+    this.title,
+    this.publishedDate,
+    this.image,
+    this.authors,
+    this.language,
+    this.previewLink,
+    this.categories,
+    this.description,
+    this.pageCount,
+    this.rating,
   });
-
-  @override
-  String toString() {
-    return 'Book(id: $id, etag: $etag, selfLink: $selfLink, volumeInfo: $volumeInfo, saleInfo: $saleInfo)';
-  }
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
       id: json['id'] as String,
       etag: json['etag'] as String,
       selfLink: json['selfLink'] as String,
-      volumeInfo: json['volumeInfo'] == null
+      title: json['volumeInfo'] == null
           ? null
-          : VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
-      saleInfo: json['saleInfo'] == null
+          : json['volumeInfo']['title'] as String,
+      publishedDate: json['volumeInfo'] == null
           ? null
-          : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'etag': etag,
-      'selfLink': selfLink,
-      'volumeInfo': volumeInfo?.toJson(),
-      'saleInfo': saleInfo?.toJson(),
-    };
-  }
-
-  Book copyWith({
-    String kind,
-    String id,
-    String etag,
-    String selfLink,
-    VolumeInfo volumeInfo,
-    SaleInfo saleInfo,
-  }) {
-    return Book(
-      id: id ?? this.id,
-      etag: etag ?? this.etag,
-      selfLink: selfLink ?? this.selfLink,
-      volumeInfo: volumeInfo ?? this.volumeInfo,
-      saleInfo: saleInfo ?? this.saleInfo,
+          : json['volumeInfo']['publishedDate'] as String,
+      image:
+          json['volumeInfo'] != null && json['volumeInfo']['imageLinks'] != null
+              ? json['volumeInfo']['imageLinks']['thumbnail'] as String
+              : null,
+      authors: json['volumeInfo'] == null
+          ? null
+          : (json['volumeInfo']['authors']?.cast<String>()),
+      language: json['volumeInfo'] == null
+          ? null
+          : json['volumeInfo']['language'] as String,
+      previewLink: json['volumeInfo'] == null
+          ? null
+          : json['volumeInfo']['previewLink'] as String,
+      categories: json['volumeInfo'] == null
+          ? null
+          : (json['volumeInfo']['categories']?.cast<String>()),
+      description: json['volumeInfo'] == null
+          ? null
+          : json['volumeInfo']['description'] as String,
+      pageCount: json['volumeInfo'] == null
+          ? null
+          : json['volumeInfo']['pageCount'] as int,
+      rating: json['volumeInfo'] == null
+          ? null
+          : (json['volumeInfo']['pageCount'] as int) % 100,
     );
   }
 
@@ -69,8 +75,16 @@ class Book extends Equatable {
       id,
       etag,
       selfLink,
-      volumeInfo,
-      saleInfo,
+      title,
+      publishedDate,
+      image,
+      authors,
+      language,
+      previewLink,
+      categories,
+      description,
+      pageCount,
+      rating
     ];
   }
 }

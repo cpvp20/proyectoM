@@ -33,11 +33,11 @@ class _ItemBookState extends State<ItemBook> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("${widget.book.volumeInfo.title}",
+                    Text("${widget.book.title}",
                         style: Theme.of(context).textTheme.headline2),
                     Text(
-                      widget.book.volumeInfo.description != null
-                          ? "${widget.book.volumeInfo.description.substring(0, 70)}..."
+                      widget.book.description != null
+                          ? "${widget.book.description.substring(0, 70)}..."
                           : "No description",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
@@ -49,7 +49,7 @@ class _ItemBookState extends State<ItemBook> {
                           .copyWith(fontSize: 18.0),
                     ),
                     Row(
-                      children: _ratingToStars(70),
+                      children: _ratingToStars(widget.book.rating),
                     )
                   ],
                 ),
@@ -58,8 +58,7 @@ class _ItemBookState extends State<ItemBook> {
                 padding: const EdgeInsets.only(left: 5.0),
                 width: MediaQuery.of(context).size.width * 0.3,
                 child: Image.network(
-                  widget.book.volumeInfo.imageLinks.thumbnail ??
-                      "https://via.placeholder.com/150",
+                  widget.book.image ?? "https://via.placeholder.com/150",
                   fit: BoxFit.fill,
                 ),
               ),

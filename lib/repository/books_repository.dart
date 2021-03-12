@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:proyectoM/models/book_case.dart';
+import 'package:proyectoM/models/book.dart';
 import 'package:http/http.dart';
 
 class BooksRepository {
@@ -11,7 +11,7 @@ class BooksRepository {
 
   BooksRepository._internal();
 
-  Future<BookCase> getAvailableBooks(String query) async {
+  Future<List<Book>> getAvailableBooks(String query) async {
     // https://www.googleapis.com/books/v1/volumes?q=query
     final _uri = Uri(
         scheme: "https",
@@ -23,10 +23,14 @@ class BooksRepository {
       final response = await get(_uri.toString());
       if (response.statusCode == HttpStatus.ok) {
         var _responseAsJson = jsonDecode(response.body);
-        BookCase bookCase = BookCase.fromJson(_responseAsJson);
-        return bookCase;
+
+        var results = (_responseAsJson['items'] as List<dynamic>)?.map((e) {
+          return e == null ? null : Book.fromJson(e as Map<String, dynamic>);
+        })?.toList();
+
+        return results;
       } else
-        return BookCase(totalItems: 0);
+        return null;
     } catch (e) {
       // arroje un error
       throw "Ha ocurrido un error: $e";

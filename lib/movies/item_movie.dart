@@ -47,7 +47,7 @@ class _ItemMovieState extends State<ItemMovie> {
                           .copyWith(fontSize: 18.0),
                     ),
                     Row(
-                      children: _ratingToStars(widget.movie.productRating),
+                      children: _ratingToStars(widget.movie.rating),
                     )
                   ],
                 ),

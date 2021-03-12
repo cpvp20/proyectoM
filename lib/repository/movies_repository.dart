@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:proyectoM/models/book_case.dart';
 import 'package:http/http.dart';
+import 'package:proyectoM/models/movie.dart';
 
-//NOT DONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! JUst template
 class MoviesRepository {
   static final MoviesRepository _moviesRepository =
       MoviesRepository._internal();
@@ -13,22 +12,31 @@ class MoviesRepository {
 
   MoviesRepository._internal();
 
-  Future<BookCase> getAvailableMovies(String query) async {
-    // https://www.googleapis.com/books/v1/volumes?q=query
+  Future<List<Movie>> getAvailableMovies(String query) async {
+//https://api.themoviedb.org/3/search/movie?api_key=346075ab2b6f1b26418e8a4019fdd4e2&language=en-US&query=potter
+    String key = "346075ab2b6f1b26418e8a4019fdd4e2";
     final _uri = Uri(
         scheme: "https",
-        host: "IDK WE NEED TO FIND AN API",
-        path: "books/v1/volumes",
-        queryParameters: {"q": query});
+        host: "api.themoviedb.org",
+        path: "3/search/movie",
+        queryParameters: {
+          "api_key": key,
+          "language": "en-US",
+          "query": query,
+        });
 
     try {
       final response = await get(_uri.toString());
       if (response.statusCode == HttpStatus.ok) {
         var _responseAsJson = jsonDecode(response.body);
-        BookCase bookCase = BookCase.fromJson(_responseAsJson);
-        return bookCase;
+
+        var results = (_responseAsJson['results'] as List<dynamic>)?.map((e) {
+          return e == null ? null : Movie.fromJson(e as Map<String, dynamic>);
+        })?.toList();
+
+        return results;
       } else
-        return BookCase(totalItems: 0);
+        return null;
     } catch (e) {
       // arroje un error
       throw "Ha ocurrido un error: $e";
