@@ -28,5 +28,18 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         yield BookErrorState(errorMessage: "ERROR EN books bloc $e");
       }
     }
+    if (event is SearchBooksToReadEvent) {
+      try {
+        yield BookLoadingState();
+        // le pasamos la lista de libros a la UI
+        var books = await _bookRepo.getBooksToRead();
+        yield BookLoadedState(
+          booksList: books,
+        );
+      } catch (e) {
+        // mostraria el error en la UI
+        yield BookErrorState(errorMessage: "ERROR EN books bloc\n $e");
+      }
+    }
   }
 }

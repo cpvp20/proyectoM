@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "934509477821",
+    "project_id": "goodstuff-25b23",
+    "storage_bucket": "goodstuff-25b23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934509477821:android:8dfee1807b73c79a3c9cd4",
+        "android_client_info": {
+          "package_name": "mx.iteso.practica.uno.proyectoM"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934509477821-oq9rvi71p32eqno9jpis71h0lp3j1b1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHyR4seQYzQF8FCIEbFZxOLVAHO-NNbnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934509477821-oq9rvi71p32eqno9jpis71h0lp3j1b1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

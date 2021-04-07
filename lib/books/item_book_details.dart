@@ -1,18 +1,13 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyectoM/colors.dart';
 import 'package:proyectoM/models/book.dart';
 import 'package:flutter/material.dart';
 
 class BookDetails extends StatefulWidget {
   final Book book;
-  final List<Book> booksToRead;
-  final List<Book> booksRead;
-
-  BookDetails(
-      {Key key,
-      @required this.book,
-      @required this.booksToRead,
-      @required this.booksRead})
-      : super(key: key);
+  BookDetails({Key key, @required this.book}) : super(key: key);
 
   @override
   _BookDetailsState createState() => _BookDetailsState();
@@ -53,21 +48,37 @@ class _BookDetailsState extends State<BookDetails> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          int index = getIndexOfItemInList(
-                              widget.booksToRead, widget.book.id);
-                          if (index == -1) {
+                          var result =
+                              true; //isBookInBooksToRead(widget.book.id);
+                          var x = isBookInBooksToRead(widget.book.id);
+                          print("HELLO");
+                          print(x);
+                          if (result) {
                             //item not in todo list
-                            widget.booksToRead.add(widget.book);
+                            FirebaseFirestore.instance
+                                .collection('books_to_read')
+                                .add({
+                              'id': widget.book.id,
+                              'title': widget.book.title,
+                              'selfLink': widget.book.selfLink,
+                              'publishedDate': widget.book.publishedDate,
+                              'image': widget.book.image,
+                              'authors': widget.book.authors,
+                              'previewLink': widget.book.previewLink,
+                              'language': widget.book.language,
+                              'categories': widget.book.categories,
+                              'description': widget.book.description,
+                              'pageCount': widget.book.pageCount,
+                              'rating': widget.book.rating,
+                            });
                           } else {
-                            //item already in todo list
-                            widget.booksToRead.removeAt(index);
+                            //item already in list
+                            //await widget.removeBook(widget.book);
                           }
                         });
                       },
                       child: Container(
-                          child: getIndexOfItemInList(
-                                      widget.booksToRead, widget.book.id) ==
-                                  -1
+                          child: true
                               ? Icon(Icons.library_add_outlined, size: 40)
                               : Icon(Icons.library_add, size: 40)),
                     ),
@@ -76,22 +87,10 @@ class _BookDetailsState extends State<BookDetails> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          int index = getIndexOfItemInList(
-                              widget.booksRead, widget.book.id);
-                          if (index == -1) {
-                            //item not in todo list
-                            widget.booksRead.add(widget.book);
-                          } else {
-                            //item already in todo list
-                            widget.booksRead.removeAt(index);
-                          }
-                        });
+                        setState(() {});
                       },
                       child: Container(
-                          child: getIndexOfItemInList(
-                                      widget.booksRead, widget.book.id) ==
-                                  -1
+                          child: true //isBookInBooksToRead(widget.book.id)
                               ? Icon(Icons.library_add_check_outlined, size: 40)
                               : Icon(Icons.library_add_check, size: 40)),
                     ),
@@ -179,14 +178,11 @@ class _BookDetailsState extends State<BookDetails> {
     return stars;
   }
 
-//this method has 2 purposes, to see if item is present in cart, and if so to find its index
-//returns -1 if item is not present in cart
-  int getIndexOfItemInList(list, String id) {
-    for (Book e in list) {
-      int index = 0;
-      if (e.id == id) return index;
-      index++;
-    }
-    return -1;
-  }
+  Future<bool> isBookInBooksToRead(String id) async =>
+      FirebaseFirestore.instance
+          .collection('users')
+          .where('id', isEqualTo: id)
+          .get()
+          .then((documentSnapshot) => (documentSnapshot != null) ? true : false)
+          .then((value) => value);
 }

@@ -24,8 +24,6 @@ class Home extends StatefulWidget {
 class _BookState extends State<Home> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   var playsList = ProductRepository.loadProducts(ProductType.PLAYS);
-  List<Book> booksToRead = [];
-  List<Book> booksRead = [];
 
   List<Movie> moviesToWatch = [];
   List<Movie> moviesWatched = [];
@@ -254,29 +252,20 @@ class _BookState extends State<Home> {
   void _openBooksPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => BooksPage(
-          booksToRead: booksToRead,
-          booksRead: booksRead,
-        ),
+        builder: (context) => BooksPage(),
       ),
     );
   }
 
   void _openBooksToReadPage() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => BooksToRead(
-        booksToRead: booksToRead,
-        booksRead: booksRead,
-      ),
+      builder: (context) => BooksToReadPage(),
     ));
   }
 
   void _openBooksReadPage() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => BooksRead(
-        booksToRead: booksToRead,
-        booksRead: booksRead,
-      ),
+      builder: (context) => BooksReadPage(),
     ));
   }
 

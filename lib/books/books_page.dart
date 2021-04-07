@@ -7,11 +7,7 @@ import 'package:proyectoM/books/item_book_details.dart';
 import 'package:proyectoM/models/book.dart';
 
 class BooksPage extends StatefulWidget {
-  final List<Book> booksToRead;
-  final List<Book> booksRead;
-
-  BooksPage({Key key, @required this.booksToRead, @required this.booksRead})
-      : super(key: key);
+  BooksPage({Key key}) : super(key: key);
 
   @override
   _BooksPageState createState() => _BooksPageState();
@@ -78,8 +74,6 @@ class _BooksPageState extends State<BooksPage> {
                                     .push(MaterialPageRoute(builder: (context) {
                                   return BookDetails(
                                     book: state.booksList[index],
-                                    booksToRead: widget.booksToRead,
-                                    booksRead: widget.booksRead,
                                   );
                                 })).then((value) => setState(() {}));
                               },

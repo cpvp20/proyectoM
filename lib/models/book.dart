@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 
 class Book extends Equatable {
   final String id;
-  final String etag;
   final String selfLink;
   final String title;
   final String publishedDate;
@@ -17,7 +16,6 @@ class Book extends Equatable {
 
   const Book({
     this.id,
-    this.etag,
     this.selfLink,
     this.title,
     this.publishedDate,
@@ -34,7 +32,6 @@ class Book extends Equatable {
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
       id: json['id'] as String,
-      etag: json['etag'] as String,
       selfLink: json['selfLink'] as String,
       title: json['volumeInfo'] == null
           ? null
@@ -73,7 +70,6 @@ class Book extends Equatable {
   List<Object> get props {
     return [
       id,
-      etag,
       selfLink,
       title,
       publishedDate,

@@ -14,3 +14,9 @@ class SearchBookEvent extends BookEvent {
   @override
   List<Object> get props => [queryText];
 }
+
+class SearchBooksToReadEvent extends BookEvent {
+  SearchBooksToReadEvent();
+  @override
+  List<Object> get props => [];
+}

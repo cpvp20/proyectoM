@@ -26,7 +26,7 @@ class MoviesRepository {
         });
 
     try {
-      final response = await get(_uri.toString());
+      final response = await get(_uri);
       if (response.statusCode == HttpStatus.ok) {
         var _responseAsJson = jsonDecode(response.body);
 
