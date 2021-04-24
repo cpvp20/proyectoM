@@ -98,13 +98,14 @@ class _PlayDetailsState extends State<PlayDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("Rating:",
+                Text("averageRating:",
                     style: Theme.of(context)
                         .textTheme
                         .headline2
                         .copyWith(fontSize: 18.0)),
                 Row(
-                  children: _ratingToStars(widget.play.productRating),
+                  children:
+                      _averageRatingToStars(widget.play.productaverageRating),
                 ),
               ],
             ),
@@ -133,10 +134,10 @@ class _PlayDetailsState extends State<PlayDetails> {
     );
   }
 
-  List<Widget> _ratingToStars(rating) {
+  List<Widget> _averageRatingToStars(averageRating) {
     List<Widget> stars = [];
     for (var i = 0; i < 5; i++) {
-      if (rating > 0 && rating / 20 > i) {
+      if (averageRating > 0 && averageRating / 20 > i) {
         stars.add(Icon(Icons.star));
       } else {
         stars.add(Icon(Icons.star_border));

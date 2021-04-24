@@ -1,7 +1,7 @@
 import 'package:proyectoM/colors.dart';
 import 'package:flutter/material.dart';
-import 'home/home.dart';
-import 'login.dart';
+import 'login/login_page.dart';
+import 'home/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key key}) : super(key: key);
@@ -142,9 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (conditions) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => Home(
-                            title: 'Good Stuuf',
-                          ),
+                          builder: (context) => HomePage(),
                         ),
                       );
                     }

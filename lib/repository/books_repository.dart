@@ -34,7 +34,7 @@ class BooksRepository {
         return null;
     } catch (e) {
       // arroje un error
-      throw "Ha ocurrido un error: $e";
+      throw "Ha ocurrido un error al llamar getAvailableBooks: $e";
     }
   }
 
@@ -54,9 +54,8 @@ class BooksRepository {
             categories: (element['categories']?.cast<String>()),
             description: element['description'] as String,
             pageCount: element['pageCount'] as int,
-            rating: (element['pageCount'] as int) % 100))
+            averageRating: element['averageRating'] as double))
         .toList();
-
     print(results);
     return results;
   }

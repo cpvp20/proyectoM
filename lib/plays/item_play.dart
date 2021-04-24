@@ -40,14 +40,15 @@ class _ItemPlayState extends State<ItemPlay> {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
-                      "Rating:",
+                      "averageRating:",
                       style: Theme.of(context)
                           .textTheme
                           .headline2
                           .copyWith(fontSize: 18.0),
                     ),
                     Row(
-                      children: _ratingToStars(widget.play.productRating),
+                      children: _averageRatingToStars(
+                          widget.play.productaverageRating),
                     )
                   ],
                 ),
@@ -66,10 +67,10 @@ class _ItemPlayState extends State<ItemPlay> {
     );
   }
 
-  List<Widget> _ratingToStars(rating) {
+  List<Widget> _averageRatingToStars(averageRating) {
     List<Widget> stars = [];
     for (var i = 0; i < 5; i++) {
-      if (rating > 0 && rating / 20 > i) {
+      if (averageRating > 0 && averageRating / 20 > i) {
         stars.add(Icon(Icons.star));
       } else {
         stars.add(Icon(Icons.star_border));

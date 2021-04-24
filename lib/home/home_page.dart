@@ -1,33 +1,28 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:proyectoM/auth/bloc/auth_bloc.dart';
 import 'package:proyectoM/books/books_page.dart';
-import 'package:proyectoM/books/books_read_page.dart';
-import 'package:proyectoM/books/books_to_read_page.dart';
-import 'package:proyectoM/models/book.dart';
-import 'package:proyectoM/models/movie.dart';
+import 'package:proyectoM/books_to_read/books_to_read_page.dart';
+import 'package:proyectoM/favorite_books/favorite_books_page.dart';
+import 'package:proyectoM/favorite_movies/favorite_movies_page.dart';
 import 'package:proyectoM/models/play.dart';
 import 'package:proyectoM/movies/movies_page.dart';
+import 'package:proyectoM/movies_to_watch/movies_to_watch_page.dart';
 import 'package:proyectoM/plays/plays_page.dart';
-import 'package:proyectoM/login.dart';
 import 'package:proyectoM/models/product_repository.dart';
 import 'package:proyectoM/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:proyectoM/colors.dart';
 
-class Home extends StatefulWidget {
-  final String title;
-
-  Home({Key key, this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
 
   @override
-  _BookState createState() => _BookState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _BookState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   var playsList = ProductRepository.loadProducts(ProductType.PLAYS);
-
-  List<Movie> moviesToWatch = [];
-  List<Movie> moviesWatched = [];
-
   List<Play> playsToSee = [];
   List<Play> playsSeen = [];
 
@@ -58,13 +53,12 @@ class _BookState extends State<Home> {
               leading: Icon(Icons.settings),
               onTap: () {},
             ),
-            ListTile(
-              title: Text("LOGOUT"),
-              leading: Icon(Icons.logout),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => LoginPage(),
-                ));
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                BlocProvider.of<AuthBloc>(context).add(
+                  SignOutAuthenticationEvent(),
+                );
               },
             ),
           ],
@@ -72,7 +66,7 @@ class _BookState extends State<Home> {
       ),
       appBar: AppBar(
         centerTitle: true,
-        title: Text(APP_TITLE),
+        title: Text("Books"),
       ),
       key: _scaffoldKey,
       body: Padding(
@@ -117,9 +111,9 @@ class _BookState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: _openBooksReadPage,
+                      onPressed: _openFavoriteBooksPage,
                       child: Text(
-                        "Books Read by Me",
+                        "My favorite Books",
                         style: Theme.of(context)
                             .textTheme
                             .headline3
@@ -157,7 +151,7 @@ class _BookState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: _openMoviesPage,
+                      onPressed: _openMoviesToWatchPage,
                       child: Text(
                         "My list of Movies To Watch",
                         style: Theme.of(context)
@@ -167,9 +161,9 @@ class _BookState extends State<Home> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: _openMoviesPage,
+                      onPressed: _openFavoriteMoviesPage,
                       child: Text(
-                        "Movies Watched by Me",
+                        "My Favorite Movies",
                         style: Theme.of(context)
                             .textTheme
                             .headline3
@@ -240,32 +234,41 @@ class _BookState extends State<Home> {
   void _openMoviesPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => MoviesPage(
-          moviesToWatch: moviesToWatch,
-          moviesWatched: moviesWatched,
-        ),
+        builder: (context) => Movies(),
       ),
     );
+  }
+
+  void _openMoviesToWatchPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => MoviesToWatch(),
+    ));
+  }
+
+  void _openFavoriteMoviesPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => FavoriteMovies(),
+    ));
   }
 
 //book methods
   void _openBooksPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => BooksPage(),
+        builder: (context) => Books(),
       ),
     );
   }
 
   void _openBooksToReadPage() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => BooksToReadPage(),
+      builder: (context) => BooksToRead(),
     ));
   }
 
-  void _openBooksReadPage() {
+  void _openFavoriteBooksPage() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => BooksReadPage(),
+      builder: (context) => FavoriteBooks(),
     ));
   }
 

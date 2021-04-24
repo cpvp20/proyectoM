@@ -11,18 +11,18 @@ class BookInitial extends BookState {}
 
 class BookLoadingState extends BookState {}
 
-class BookErrorState extends BookState {
-  final String errorMessage;
-
-  BookErrorState({@required this.errorMessage});
-  @override
-  List<Object> get props => [errorMessage];
-}
-
 class BookLoadedState extends BookState {
   final List<Book> booksList;
 
   BookLoadedState({@required this.booksList});
   @override
   List<Object> get props => [booksList];
+}
+
+class BookErrorState extends BookState {
+  final String errorMessage;
+
+  BookErrorState({@required this.errorMessage});
+  @override
+  List<Object> get props => [errorMessage];
 }

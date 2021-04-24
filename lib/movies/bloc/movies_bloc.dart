@@ -4,28 +4,28 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:proyectoM/models/movie.dart';
 import 'package:proyectoM/repository/movies_repository.dart';
-part 'movie_event.dart';
-part 'movie_state.dart';
+part 'movies_event.dart';
+part 'movies_state.dart';
 
-class MovieBloc extends Bloc<MovieEvent, MovieState> {
-  MovieBloc() : super(MovieInitial());
+class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
+  MoviesBloc() : super(MoviesInitial());
   MoviesRepository _movieRepo = MoviesRepository();
 
   @override
-  Stream<MovieState> mapEventToState(
-    MovieEvent event,
+  Stream<MoviesState> mapEventToState(
+    MoviesEvent event,
   ) async* {
-    if (event is SearchMovieEvent) {
+    if (event is SearchMoviesEvent) {
       try {
-        yield MovieLoadingState();
+        yield MoviesLoadingState();
         // le pasamos la lista de libros a la UI
         var movies = await _movieRepo.getAvailableMovies(event.queryText);
-        yield MovieLoadedState(
+        yield MoviesLoadedState(
           moviesList: movies,
         );
       } catch (e) {
         // mostraria el error en la UI
-        yield MovieErrorState(errorMessage: "ERROR EN movie bloc $e");
+        yield MoviesErrorState(errorMessage: "ERROR en movies bloc $e");
       }
     }
   }

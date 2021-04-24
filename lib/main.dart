@@ -1,14 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:proyectoM/utils/constants.dart';
-import 'begin.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'splash_screen.dart';
+import 'auth/bloc/auth_bloc.dart';
 import 'colors.dart';
+import 'home/home_page.dart';
+import 'login/login_page.dart';
 
 void main() async {
   // inicializar firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(
+    BlocProvider(
+      create: (context) => AuthBloc()..add(VerifyAuthenticationEvent()),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +25,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData _ = ThemeData.light();
     return MaterialApp(
-      title: APP_TITLE,
-      home: BeginPage(),
+      title: "GoodStuff",
+      home: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          if (state is AlreadyAuthState) return HomePage();
+          if (state is UnAuthState) return LoginPage();
+          return SplashScreen();
+        },
+      ),
       theme: ThemeData(
         primaryColor: primary,
         secondaryHeaderColor: secondary,

@@ -1,69 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
-import 'package:proyectoM/bloc/book_bloc.dart';
+import 'package:proyectoM/books/bloc/book_bloc.dart';
 import 'package:proyectoM/books/item_book.dart';
 import 'package:proyectoM/books/item_book_details.dart';
+import 'package:proyectoM/movies/item_movie.dart';
+import 'package:proyectoM/movies/item_movie_details.dart';
 
-class BooksToReadPage extends StatefulWidget {
-  BooksToReadPage({Key key}) : super(key: key);
+import 'bloc/movies_to_watch_bloc.dart';
+
+class MoviesToWatch extends StatefulWidget {
+  MoviesToWatch({Key key}) : super(key: key);
 
   @override
-  _BooksToReadPageState createState() => _BooksToReadPageState();
+  _MoviesToWatchState createState() => _MoviesToWatchState();
 }
 
-class _BooksToReadPageState extends State<BooksToReadPage> {
-  BookBloc _BookBloc;
-
-  @override
-  void dispose() {
-    _BookBloc.close();
-    super.dispose();
-  }
+class _MoviesToWatchState extends State<MoviesToWatch> {
+  MoviesToWatchBloc _bloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        _BookBloc = BookBloc();
-        _BookBloc.add(SearchBooksToReadEvent());
-
-        return _BookBloc;
+        _bloc = MoviesToWatchBloc();
+        _bloc..add(GetMoviesToWatchEvent()); //show this initially
+        return _bloc;
       },
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("My Books To Read"),
+          title: Text("Movies To Watch"),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
           child: Column(
             children: [
               Expanded(
-                child: BlocConsumer<BookBloc, BookState>(
+                child: BlocConsumer<MoviesToWatchBloc, MoviesToWatchState>(
                   listener: (context, state) {
-                    if (state is BookErrorState) {
-                      print("Error: ${state.errorMessage}");
+                    if (state is MoviesToWatchErrorState) {
+                      Scaffold.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(
+                            content: Text("Error: ${state.errorMessage}"),
+                          ),
+                        );
                     }
                   },
                   builder: (context, state) {
-                    if (state is BookLoadedState) {
+                    if (state is MoviesToWatchLoadedState) {
                       return ListView.builder(
-                          itemCount: state.booksList.length,
+                          itemCount: state.moviesList.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return BookDetails(
-                                    book: state.booksList[index],
+                                  return MovieDetails(
+                                    movie: state.moviesList[index],
                                   );
                                 })).then((value) => setState(() {}));
                               },
-                              child: ItemBook(book: state.booksList[index]),
+                              child: ItemMovie(movie: state.moviesList[index]),
                             );
                           });
-                    } else if (state is BookLoadingState) {
+                    } else if (state is MoviesToWatchLoadingState) {
                       return ListView.builder(
                         itemCount: 7,
                         itemBuilder: (BuildContext context, int index) {
@@ -71,8 +74,9 @@ class _BooksToReadPageState extends State<BooksToReadPage> {
                         },
                       );
                     } else
-                      print("else");
-                    //_BookBloc.add(SearchBooksToReadEvent());
+                      return Center(
+                        child: Text("Lookup anything!"),
+                      );
                   },
                 ),
               ),

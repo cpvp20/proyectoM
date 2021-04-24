@@ -1,38 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
-import 'package:proyectoM/bloc/movie_bloc.dart';
 import 'package:proyectoM/movies/item_movie.dart';
 import 'package:proyectoM/movies/item_movie_details.dart';
-import 'package:proyectoM/models/movie.dart';
 
-class MoviesPage extends StatefulWidget {
-  final List<Movie> moviesToWatch;
-  final List<Movie> moviesWatched;
+import 'bloc/movies_bloc.dart';
 
-  MoviesPage(
-      {Key key, @required this.moviesToWatch, @required this.moviesWatched})
-      : super(key: key);
+class Movies extends StatefulWidget {
+  Movies({Key key}) : super(key: key);
 
   @override
-  _MoviesPageState createState() => _MoviesPageState();
+  _MoviesState createState() => _MoviesState();
 }
 
-class _MoviesPageState extends State<MoviesPage> {
-  MovieBloc _MovieBloc;
-
-  @override
-  void dispose() {
-    _MovieBloc.close();
-    super.dispose();
-  }
+class _MoviesState extends State<Movies> {
+  MoviesBloc _moviesBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        _MovieBloc = MovieBloc();
-        return _MovieBloc;
+        _moviesBloc = MoviesBloc();
+        _moviesBloc
+          ..add(SearchMoviesEvent(queryText: "titanic")); //show this initially
+        return _moviesBloc;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -45,20 +36,20 @@ class _MoviesPageState extends State<MoviesPage> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  labelText: "Search by name or author",
+                  labelText: "Search by name or keyword",
                   suffixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 onSubmitted: (content) {
-                  _MovieBloc.add(SearchMovieEvent(queryText: content));
+                  _moviesBloc.add(SearchMoviesEvent(queryText: content));
                 },
               ),
               Expanded(
-                child: BlocConsumer<MovieBloc, MovieState>(
+                child: BlocConsumer<MoviesBloc, MoviesState>(
                   listener: (context, state) {
-                    if (state is MovieErrorState) {
+                    if (state is MoviesErrorState) {
                       Scaffold.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(
@@ -69,7 +60,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     }
                   },
                   builder: (context, state) {
-                    if (state is MovieLoadedState) {
+                    if (state is MoviesLoadedState) {
                       return ListView.builder(
                           itemCount: state.moviesList.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -79,15 +70,13 @@ class _MoviesPageState extends State<MoviesPage> {
                                     .push(MaterialPageRoute(builder: (context) {
                                   return MovieDetails(
                                     movie: state.moviesList[index],
-                                    moviesToWatch: widget.moviesToWatch,
-                                    moviesWatched: widget.moviesWatched,
                                   );
                                 })).then((value) => setState(() {}));
                               },
                               child: ItemMovie(movie: state.moviesList[index]),
                             );
                           });
-                    } else if (state is MovieLoadingState) {
+                    } else if (state is MoviesLoadingState) {
                       return ListView.builder(
                         itemCount: 7,
                         itemBuilder: (BuildContext context, int index) {

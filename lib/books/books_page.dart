@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
-import 'package:proyectoM/bloc/book_bloc.dart';
+import 'package:proyectoM/books/bloc/book_bloc.dart';
 import 'package:proyectoM/books/item_book.dart';
 import 'package:proyectoM/books/item_book_details.dart';
-import 'package:proyectoM/models/book.dart';
 
-class BooksPage extends StatefulWidget {
-  BooksPage({Key key}) : super(key: key);
+class Books extends StatefulWidget {
+  Books({Key key}) : super(key: key);
 
   @override
-  _BooksPageState createState() => _BooksPageState();
+  _BooksState createState() => _BooksState();
 }
 
-class _BooksPageState extends State<BooksPage> {
-  BookBloc _BookBloc;
-
-  @override
-  void dispose() {
-    _BookBloc.close();
-    super.dispose();
-  }
+class _BooksState extends State<Books> {
+  BookBloc _bloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        _BookBloc = BookBloc();
-        return _BookBloc;
+        _bloc = BookBloc();
+        _bloc
+          ..add(
+              SearchBookEvent(queryText: "harry potter")); //show this initially
+        return _bloc;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -47,7 +43,7 @@ class _BooksPageState extends State<BooksPage> {
                   ),
                 ),
                 onSubmitted: (content) {
-                  _BookBloc.add(SearchBookEvent(queryText: content));
+                  _bloc.add(SearchBookEvent(queryText: content));
                 },
               ),
               Expanded(

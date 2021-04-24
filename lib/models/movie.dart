@@ -7,17 +7,16 @@ class Movie extends Equatable {
   final String image;
   final String language;
   final String description;
-  final double rating;
+  final double averageRating;
 
-  const Movie({
-    this.id,
-    this.title,
-    this.releaseDate,
-    this.image,
-    this.language,
-    this.description,
-    this.rating,
-  });
+  const Movie(
+      {this.id,
+      this.title,
+      this.releaseDate,
+      this.image,
+      this.language,
+      this.description,
+      this.averageRating});
 
   @override
   String toString() {
@@ -40,13 +39,33 @@ class Movie extends Equatable {
           ? null
           : json['original_language'] as String,
       description: json['overview'] == null ? null : json['overview'] as String,
-      rating: json['vote_average'] == null
+      averageRating: json['vote_average'] == null
           ? null
           : (json['vote_average'].toDouble()) * 10,
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'releaseDate': releaseDate,
+      'image': image,
+      'language': language,
+      'description': description,
+      'averageRating': averageRating,
+    };
+  }
+
   List<Object> get props {
-    return [id, title, releaseDate, image, language, description, rating];
+    return [
+      id,
+      title,
+      releaseDate,
+      image,
+      language,
+      description,
+      averageRating
+    ];
   }
 }
