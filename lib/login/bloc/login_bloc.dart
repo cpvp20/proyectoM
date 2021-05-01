@@ -38,7 +38,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } else if (event is LoginWithEmailEvent) {
       try {
         yield LoginLoadingState();
-        await _authProvider.signInWithEmail(event.email, event.password);
+        await _authProvider.signInWithEmailAndPassword(
+            event.email, event.password);
         yield LoginSuccessState();
       } catch (e) {
         yield LoginErrorState(error: e.code);

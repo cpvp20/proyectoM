@@ -33,7 +33,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         yield UnAuthState();
     }
     if (event is SignOutAuthenticationEvent) {
-      if (FirebaseAuth.instance.currentUser.isAnonymous)
+      if (FirebaseAuth.instance.currentUser.isAnonymous ||
+          FirebaseAuth.instance.currentUser.email != null)
         await _authProvider.signOutFirebase();
       else {
         await _authProvider.signOutFirebase();

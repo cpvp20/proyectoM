@@ -47,9 +47,9 @@ class _LoginFormState extends State<LoginForm> {
     _loginBloc.add(LoginWithGoogleEvent());
   }
 
-  void _emailLogIn(bool _) {
-    print("email");
-    _loginBloc.add(LoginWithEmailEvent(email: "email", password: "1213"));
+  void _emailLogIn(String email, String password) {
+    print(email);
+    _loginBloc.add(LoginWithEmailEvent(email: email, password: password));
   }
 
   @override
@@ -97,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: FormBody(
                   onGoogleLoginTap: _googleLogIn,
                   onAnonymousLoginTap: _anonymousLogIn,
-                  onEmailLoginTap: _emailLogIn,
+                  loginWithEmailAndPassword: _emailLogIn,
                 ),
               );
             },

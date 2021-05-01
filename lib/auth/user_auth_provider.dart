@@ -55,10 +55,43 @@ class UserAuthProvider {
     print("Firebase user auth token: $firebaseAuthToken");
   }
 
-  Future<void> signInWithEmail(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    try {
+      print("Email and password: $email, $password");
+      final user = (await _auth.signInWithEmailAndPassword(
+              email: email, password: password))
+          .user;
+      await user.updateProfile(
+        displayName: "${user.uid.substring(0, 5)}_Invitado",
+      );
+      await user.reload();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
+
+  Future<void> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      final user = (await _auth.createUserWithEmailAndPassword(
+              email: email, password: password))
+          .user;
+      await user.updateProfile(
+        displayName: "${user.uid.substring(0, 5)}_Invitado",
+      );
+      await user.reload();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

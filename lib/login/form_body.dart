@@ -10,7 +10,7 @@ class FormBody extends StatelessWidget {
   // cambiar a un solo value changed que reciba enum de login
   final ValueChanged<bool> onAnonymousLoginTap;
   final ValueChanged<bool> onGoogleLoginTap;
-  final ValueChanged<bool> onEmailLoginTap;
+  final Function loginWithEmailAndPassword;
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -18,7 +18,7 @@ class FormBody extends StatelessWidget {
     Key key,
     @required this.onAnonymousLoginTap,
     @required this.onGoogleLoginTap,
-    @required this.onEmailLoginTap,
+    @required this.loginWithEmailAndPassword,
   }) : super(key: key);
 
   @override
@@ -33,8 +33,8 @@ class FormBody extends StatelessWidget {
         ),
         Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text('Full name:',
-                style: Theme.of(context).textTheme.headline6)),
+            child:
+                Text('Email:', style: Theme.of(context).textTheme.headline6)),
         TextField(
           controller: _usernameController,
         ),
@@ -71,9 +71,8 @@ class FormBody extends StatelessWidget {
             onPressed: () {
               if (_usernameController.text.length > 0 &&
                   _passwordController.text.length > 0) {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ));
+                loginWithEmailAndPassword(
+                    _usernameController.text, _passwordController.text);
               }
             },
           ),
