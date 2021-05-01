@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:proyectoM/home/home_page.dart';
 import '../colors.dart';
-import '../register.dart';
+import '../register/register.dart';
 
 class FormBody extends StatelessWidget {
   // cambiar a un solo value changed que reciba enum de login

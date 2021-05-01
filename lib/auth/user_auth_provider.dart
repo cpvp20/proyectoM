@@ -57,7 +57,6 @@ class UserAuthProvider {
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
-      print("Email and password: $email, $password");
       final user = (await _auth.signInWithEmailAndPassword(
               email: email, password: password))
           .user;
