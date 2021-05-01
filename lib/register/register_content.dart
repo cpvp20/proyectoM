@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import '../login/login_page.dart';
-import '../home/home_page.dart';
 import 'package:proyectoM/colors.dart';
 
 class RegisterContent extends StatefulWidget {
-  RegisterContent({Key key}) : super(key: key);
+  final Function(String email, String password) onRegister;
+
+  RegisterContent({Key key, @required this.onRegister}) : super(key: key);
 
   @override
-  RegisterContentState createState() => RegisterContentState();
+  RegisterContentState createState() => RegisterContentState(onRegister);
 }
 
 class RegisterContentState extends State<RegisterContent> {
+  Function(String email, String password) onRegister;
+  RegisterContentState(this.onRegister);
+
   bool checked = false;
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -136,11 +140,8 @@ class RegisterContentState extends State<RegisterContent> {
                   ),
                   onPressed: () {
                     if (conditions) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
+                      onRegister(
+                          _emailController.text, _passwordController.text);
                     }
                   },
                 ),

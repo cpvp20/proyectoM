@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:proyectoM/register/register.dart';
 import 'splash_screen.dart';
 import 'auth/bloc/auth_bloc.dart';
 import 'colors.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       home: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           if (state is AlreadyAuthState) return HomePage();
-          if (state is UnAuthState) return LoginPage();
+          if (state is UnAuthState) return RegisterPage();
           return SplashScreen();
         },
       ),

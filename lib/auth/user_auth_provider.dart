@@ -82,6 +82,7 @@ class UserAuthProvider {
       await user.updateProfile(
         displayName: "${user.uid.substring(0, 5)}_Invitado",
       );
+      print(_auth.currentUser);
       await user.reload();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

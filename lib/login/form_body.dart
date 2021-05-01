@@ -1,8 +1,6 @@
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:proyectoM/home/home_page.dart';
 import '../colors.dart';
 import '../register/register.dart';
 

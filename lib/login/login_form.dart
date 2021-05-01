@@ -16,25 +16,6 @@ class _LoginFormState extends State<LoginForm> {
   LoginBloc _loginBloc;
   bool _showLoading = false;
 
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool conditions = false;
-
-  Function _checkConditions() {
-    return (value) {
-      if (_usernameController.text.length > 0 &&
-          _passwordController.text.length > 0) {
-        setState(() {
-          conditions = true;
-        });
-      } else {
-        setState(() {
-          conditions = false;
-        });
-      }
-    };
-  }
-
   void _anonymousLogIn(bool _) {
     print("anonimo");
     _loginBloc.add(LoginAnonymousEvent());
@@ -87,6 +68,7 @@ class _LoginFormState extends State<LoginForm> {
               } else if (state is LoginLoadingState) {
                 _showLoading = !_showLoading;
               } else if (state is LoginSuccessState) {
+                Navigator.pop(context);
                 BlocProvider.of<AuthBloc>(context)
                     .add(VerifyAuthenticationEvent());
               }
