@@ -9,6 +9,7 @@ import 'package:proyectoM/models/book.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
+import 'place.dart';
 
 class BookDetails extends StatefulWidget {
   final Book book;
@@ -161,7 +162,12 @@ class _BookDetailsState extends State<BookDetails> {
                       icon: Icon(Icons.location_on_outlined),
                       tooltip: 'Find book near me',
                       onPressed: () {
-                        setState(() {});
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return Place(
+                              //book: widget.book,
+                              );
+                        })).then((value) => setState(() {}));
                       },
                     ),
                     Text('Find book near me')
