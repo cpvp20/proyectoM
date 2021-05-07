@@ -33,10 +33,6 @@ class UserAuthProvider {
     final googleUser = await _googleSignIn.signIn();
     final googleAuth = await googleUser.authentication;
 
-    print("user: ${googleUser.displayName}");
-    print("user: ${googleUser.email}");
-    print("user: ${googleUser.photoUrl}");
-
     // credenciales para firebase
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,

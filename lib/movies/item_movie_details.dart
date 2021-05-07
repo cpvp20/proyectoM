@@ -115,10 +115,14 @@ class _MovieDetailsState extends State<MovieDetails> {
                   children: <Widget>[
                     IconButton(
                       iconSize: 55,
-                      icon: Icon(Icons.location_on_outlined),
+                      icon: Icon(Icons.local_movies),
                       tooltip: 'Find movie online',
-                      onPressed: () {
-                        setState(() {});
+                      onPressed: () async {
+                        launch(
+                            "https://www.netflix.com/search?q=${widget.movie.title}",
+                            enableJavaScript: true,
+                            forceWebView: true,
+                            enableDomStorage: true);
                       },
                     ),
                     Text('Find movie online')

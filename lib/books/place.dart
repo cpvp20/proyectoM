@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart';
 import 'package:proyectoM/models/book.dart';
-//import 'locations.dart' as locations;
 
 class Place extends StatefulWidget {
   final Book book;
@@ -15,7 +14,28 @@ class Place extends StatefulWidget {
 
 class _PlaceState extends State<Place> {
   final Map<String, Marker> _markers = {};
-  Future<void> _onMapCreated(GoogleMapController controller) async {
+  GoogleMapController _mapController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Libraries where you can find ${widget.book.title}'),
+      ),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: const LatLng(
+              20.7249, -103.4372), //estas son unas coord equis de guadalajara
+          zoom: 12,
+        ),
+        markers: _markers.values.toSet(),
+      ),
+    );
+  }
+
+  Future<void> _onMapCreated(controller) async {
+    _mapController = controller;
     final librariesfromAPI = await getLibraries();
     setState(() {
       _markers.clear();
@@ -25,7 +45,7 @@ class _PlaceState extends State<Place> {
           position: LatLng(office["lat"], office["lng"]),
           infoWindow: InfoWindow(
             title: office["name"],
-            snippet: office["address"],
+            snippet: office["address"] + "\n" + office["phone"],
           ),
         );
         _markers[office["name"]] = marker;
@@ -33,31 +53,9 @@ class _PlaceState extends State<Place> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Libraries where you can find this book'),
-      ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: const LatLng(20.7249,
-              -103.4372), //estas son unas coord equis de guadalajara LOL porque no logre hacer funcionar el getcurrentlocation
-          zoom: 12,
-        ),
-        markers: _markers.values.toSet(),
-      ),
-    );
-  }
-
   Future<Map<String, dynamic>> getLibraries() async {
-    var rating =
-        5; //this should be a param instead that is passed from book!!!!!!!!!!!!
-    // https://www.googleapis.com/books/v1/volumes?q=query
-    final url = rating > 5
-        ? "https://news-app-client-caro.herokuapp.com/big"
-        : "https://news-app-client-caro.herokuapp.com/small";
+    final url =
+        'https://news-app-client-caro.herokuapp.com/libraries?rating=${widget.book.averageRating}';
     try {
       final response = await get(Uri.parse(url));
       if (response.statusCode == 200) {

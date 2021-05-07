@@ -165,8 +165,8 @@ class _BookDetailsState extends State<BookDetails> {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
                           return Place(
-                              //book: widget.book,
-                              );
+                            book: widget.book,
+                          );
                         })).then((value) => setState(() {}));
                       },
                     ),
